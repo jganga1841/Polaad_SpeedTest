@@ -1,0 +1,176 @@
+<div class="row ">
+    <div class="col-lg-12">
+        <!--<h5 class="page-title">Deliver Slip</h5>-->
+    </div>
+</div>
+
+<div class="panel panel-default top10 ">
+    <div class="panel-heading">
+        Delivery Slip Confirmation
+    </div>
+    <div class="row col-lg-12 top10" *ngIf="lblMessage != undefined">
+        <div class=" alert-success">
+            <strong class="col-sm-1">Warning : </strong>
+            <label class="control-label-left col-sm-11 fontweight ">{{lblMessage}}</label>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="well top10">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label-left col-sm-3 ">C&F Name:</label>
+                        <div class="col-sm-3">
+                            <label class="control-label-left fontweight">{{loadingToById.CnfOrgName}}</label>
+                            <!--<label class="control-label-left fontweight" *ngFor="let item of dealerNameList; let isLast=last">
+                               {{item}}{{isLast ? '' : ', '}}</label>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label-left col-sm-3 ">Vehicle No:</label>
+                        <div class="col-sm-3">
+                            <label class="control-label-left fontweight">{{loadingToById.VehicleNo}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="control-label-left col-sm-3 ">Joint Delivery:</label>
+                        <div class="col-sm-3">
+                            <label class="control-label-left fontweight">{{loadingToById.IsJointDelivery ===1 ? "Yes" : "No"}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label-left col-sm-3 ">No of Deliveries:</label>
+                        <div class="col-sm-3">
+                            <label class="control-label-left fontweight">{{loadingToById.NoOfDeliveries}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="well top10" *ngFor="let loadingSlipTo of loadingToById.LoadingSlipList">
+            <div class="row ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label-left col-sm-2 ">Slip #:</label>
+                            <div class="col-sm-2">
+                                <label class="control-label-left fontweight">{{loadingSlipTo.LoadingSlipNo}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label-left col-sm-2 ">Dealer :</label>
+                            <div class="col-sm-3">
+                                <label class="control-label-left fontweight">{{loadingSlipTo.DealerOrgName}}</label>
+                                <!--<label class="control-label-left fontweight" *ngFor="let item of dealerNameList; let isLast=last">
+                               {{item}}{{isLast ? '' : ', '}}</label>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label-left col-sm-1 ">CD:</label>
+                            <div class="col-sm-2">
+                                <label class="control-label-left fontweight">{{loadingSlipTo.CdStructure}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row top10">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="table-responsive col-sm-12">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr class="bg-info">
+                                            <th>
+                                                Size
+                                            </th>
+                                            <th>
+                                                Quantity
+                                            </th>
+                                            <th>
+                                                Layer
+                                            </th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let loadingSlipExtTo of loadingSlipTo.LoadingSlipExtTOList">
+                                            <td>{{loadingSlipExtTo.MaterialDesc}}</td>
+                                            <td>{{loadingSlipExtTo.LoadingQty}}</td>
+                                            <td>{{loadingSlipExtTo.LoadingLayerDesc == "Middle 1" ? "Middle" : loadingSlipExtTo.LoadingLayerDesc}}</td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12 top10">
+            <div class="form-group col-sm-12">
+                <button type="button " class="btn btn-primary left col-sm-2" [disabled]="!isConfirmed" (click)="passConfirmationDate($event)"> Confirm</button>
+                <div class="col-sm-5 input-group date" style="padding-left: 15px">
+                    <!--<input class="form-control" [(ngModel)]="confirmDateTime" style="background-color: white" type="text" id="confirmDateTime" name="dtConfirmDate" ng2-datetime-picker date-format="DD/MM/YYYY HH:mm" date-only="false" readonly close-on-select="true">-->
+                    <input class="form-control" type="text" [(ngModel)]="confirmDateTime" id="confirmDateTime" name="dtConfirmDate" ng2-datetime-picker date-format="DD-MM-YYYY hh:mm" year="2014" month="12" day="31" hour="11" minute='59' readonly close-on-select="false" [show-close-layer]="true"
+                        (ngModelChange)="validateDateBeforeConfrimation()" />
+                    <label class="input-group-addon btn" for="confirmDateTime" style="padding: 1px 0px;font-size: 19px;">
+                                                  <span class="fa fa-calendar" style="padding-top: 7px;"></span>
+                                                </label>
+                    <!--<input [ngModel]="cinfirmTime" (focus)="toggleTimePicker(true)" readonly />
+                    <time-picker *ngIf="showTimePicker" [initTime]="time" (onTimePickerCancel)="toggleTimePicker($event)" (onSelectTime)="setTime($event)"></time-picker>-->
+                </div>
+                <!--<div class="col-sm-5 input-group date" style="padding-left: 15px">
+                    <input [(ngModel)]="cinfirmTime" (focus)="toggleTimePicker(true)" ng2-datetime-picker date-format="HH:mm" time-only="true" minute-step="5" close-on-select="false" />
+
+                </div>-->
+            </div>
+
+
+        </div>
+        <div class="col-lg-12 top10">
+            <div class="form-group col-sm-12">
+                <button type="button " class="btn btn-primary col-sm-2" [disabled]="notConfirmReasonId == 0" (click)="updateNotConfirmStatus()">Not Confirm</button>
+                <div class="col-sm-5">
+                    <select name="ddlNotConfirm" class="form-control" [(ngModel)]="notConfirmReasonId">
+                        <option value="0">Select Reason</option>
+                        <option *ngFor="let notConfirmTo of listNotConfirmReason" [value]="notConfirmTo.Value" >{{notConfirmTo.Text}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 top10">
+            <div class="form-group col-sm-12">
+                <button type="button " class="btn btn-primary col-sm-2" [disabled]="waitingReasonId == 0" (click)="updateWaitingReason()">Waiting</button>
+                <div class="col-sm-5">
+                    <select name="ddlWaiting" class="form-control" [(ngModel)]="waitingReasonId">
+                        <option value="0">Select Reason</option>
+                        <option *ngFor="let waitingTo of listWaitingReason" [value]="waitingTo.Value" >{{waitingTo.Text}}</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 top10">
+            <div class="form-group col-sm-12">
+                <button type="button" class="btn btn-primary btn-color btn-bg-color  " (click)="backToViewLoading()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <app-error-message></app-error-message>
+    <app-confirm></app-confirm>
+</div>

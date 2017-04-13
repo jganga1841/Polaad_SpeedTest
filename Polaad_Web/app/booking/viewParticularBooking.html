@@ -1,0 +1,116 @@
+<div class="row">
+    <div class="col-lg-12">
+
+        <h5 class="page-title" >
+            View Booking Details:
+        </h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                    Booking Details: #{{bookingTO.IdBooking}}
+                   <div style="float: right">
+                   {{bookingTO.CreatedOnStr }}
+                   </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-horizontal">
+                            <div class="row ">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">C & F Name:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.CnfName}}</label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="control-label-left col-sm-2">Dealer Name:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.DealerName}}</label>
+                                </div>
+                            </div>                         
+                            <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">Booking Qty:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.BookingQty}}</label>
+                                </div>
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2">Booking Rate:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.BookingRate |currency : 'INR': true:'1.0-0'}}</label>
+                                </div>
+                            </div>
+                             <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">Pending Qy;</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.PendingQty }}</label>
+                                </div>
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2">Cd Structure:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.CdStructure}}</label>
+                                </div>
+                            </div>
+                            <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">No Of Deliveries:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.NoOfDeliveries}}</label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="control-label-left col-sm-2 ">Delivery Days:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.DeliveryDays}}</label>
+
+                                </div>
+                            </div>
+
+                            <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">Status Date:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.StatusDateStr }}</label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="control-label-left col-sm-2">Status:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">{{bookingTO.Status}}</label>
+                                </div>
+                            </div>
+                            <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">Is Confirmed:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">
+                                                            <p *ngIf="bookingTO.IsConfirmed">Confirmed</p> 
+                                                            <p *ngIf="!bookingTO.IsConfirmed">Non-Confirmed</p>
+                                                        </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="control-label-left col-sm-2 ">Is Joint Delivery:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">
+                                                            <p *ngIf="bookingTO.IsJointDelivery">Yes</p> 
+                                                            <p *ngIf="!bookingTO.IsJointDelivery">No</p>
+                                                        </label>
+                                </div>
+                            </div>
+                            <div class="row top10">
+                                <div class="form-inline ">
+                                    <label class="control-label-left col-sm-2 ">Within Quota Limit:</label>
+                                    <label class="control-label-left col-sm-3 fontweight">
+                                                            <p *ngIf="bookingTO.IsWithinQuotaLimit">Yes</p> 
+                                                            <p *ngIf="!bookingTO.IsWithinQuotaLimit">No</p>
+                                                        </label>
+                                </div>
+                                <div class="form-inline">
+                                    <label class="control-label-left col-sm-2">Special Requirement:</label>
+                                    <label class="control-label-left col-sm-3 fontweight" >
+                                                            <p *ngIf="bookingTO.IsSpecialRequirement">Yes</p> 
+                                                            <p *ngIf="!bookingTO.IsSpecialRequirement">No</p>
+                                                        </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

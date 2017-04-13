@@ -1,0 +1,17 @@
+[0220/181935:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0220/181935:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0221/105742:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0221/105742:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0222/092021:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0222/092021:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0225/112838:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0225/112838:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0227/090718:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0227/090718:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0310/115924.442:ERROR:exception_handler_server.cc(524)] ConnectNamedPipe: The pipe is being closed. (0xE8)
+[0311/181426:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0311/181426:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0313/093140:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0313/093140:ERROR:node_debugger.cc(86)] Cannot start debugger server
+[0321/160252:ERROR:tcp_listen_socket.cc(76)] Could not bind socket to 127.0.0.1:6004
+[0321/160252:ERROR:node_debugger.cc(86)] Cannot start debugger server

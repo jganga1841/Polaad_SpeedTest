@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="page-title">Booking Menus</h5>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="page-title">
+                    Click Icons to Navigate To Options
+                </h5>
+
+            </div>
+            <div class="panel-body">
+                <div class="row form inline col-sm-12">
+                    <div class="row">
+
+                        <div class="table-responsive">
+                            <table class="table table-hover" style="border-collapse: inherit;padding-left: 18px;">
+                                <tr class="bg-info">
+                                    <td style="text-align: center">
+                                     <a routerLink="/NewBooking" routerLinkActive="active">
+                                        <div class="icon-wrapper">
+                                            <i class="fa fa-plus-circle custom-icon test" data-toggle="tooltip" data-placement="top" title="Add New Booking"><span class="fix-editor">&nbsp;</span></i>
+                                        </div>
+                                        <p> New Booking
+                                        </p>
+                                        </a>
+                                    </td>
+                                    <td style="text-align: center">
+                                     <a routerLink="/ViewBooking" routerLinkActive="active">
+                                        <div class="icon-wrapper"><i class="fa fa-tasks custom-icon" data-toggle="tooltip" data-placement="top" title="View All Bookings"><span class="fix-editor">&nbsp;</span></i></div>
+                                        <p>View Bookings
+                                        </p>
+                                     </a>
+                                    </td>
+                                    <td style="text-align: center" *ngIf="!isShowForCnF">
+                                        <a routerLink="/BookingConfirmation" routerLinkActive="active">
+                                            <div class="icon-wrapper"><i class="fa fa-check-circle-o custom-icon" data-toggle="tooltip" data-placement="top" title="C&F Agent Master"><span class="fix-editor">&nbsp;</span></i></div>
+                                            <p>Booking Approval
+                                            </p>
+                                        </a>
+
+                                    </td>
+                                    <td style="text-align: center" *ngIf="isShowForCnF">
+                                     <a routerLink="/BookingConfirmationByCnF" routerLinkActive="active">
+                                        <div class="icon-wrapper">
+                                            <i class="fa fa-thumbs-o-up custom-icon"><span class="fix-editor">&nbsp;</span>  </i></div>
+                                        <p>Booking Acceptance
+                                        </p>
+                                     </a>
+                                    </td>
+                                    <td style="text-align: center">
+                                     <a routerLink="" routerLinkActive="active">
+                                        <div class="icon-wrapper"><i class="fa fa-bar-chart custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                        <p>Reports
+                                        </p>
+                                     </a>
+                                    </td>
+                                      <td style="text-align: center" *ngIf="isDirector && !isClosed">
+                                     <a  routerLinkActive="active" (click)="showConfirmDialog()">
+                                        <div class="icon-wrapper"><i class="fa fa-stop-circle-o  custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                        <p>Stop Bookings
+                                        </p>
+                                     </a>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+              <app-error-message></app-error-message>
+              <app-confirm></app-confirm>

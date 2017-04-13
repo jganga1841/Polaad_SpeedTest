@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="page-title">
+            C&F Agent Master
+        </h5>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">C&F Agent List</a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>C&F Name</th>
+                            <th>First Owner</th>
+                            <th>Address</th>
+                            <th>Mobile No</th>
+                            <th>Email Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr *ngFor="let StockYardInfo of stockYardInfoList">
+                            <td>{{StockYardInfo.Location}}</td>
+                            <td>{{StockYardInfo.CompartmentNo}}</td>
+                            <td>{{StockYardInfo.CompartmentSize}}</td>
+                            <td>{{StockYardInfo.MateHandlSystem}}</td>
+                        </tr>-->
+                    </tbody>
+
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Add New C&F
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-6">
+                    <form role="form">
+
+                        <div class="form-group">
+                            <label>Firm Name : </label>
+                            <input class="form-control" placeholder="Firm Name" name="FirmName" [(ngModel)]="newOrgInfo.FirmName">
+                        </div>
+                        <div class="form-group">
+                            <label>Plot No : </label>
+                            <input class="form-control" placeholder="Plot No" name="PlotNo" [(ngModel)]="newOrgInfo.PlotNo">
+                        </div>
+                        <div class="form-group">
+                            <label>Stree Name : </label>
+                            <input class="form-control" placeholder="Stree Name" name="StreetName" [(ngModel)]="newOrgInfo.StreetName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Area / Location : </label>
+                            <input class="form-control" placeholder="Area/Locality" name="AreaName" [(ngModel)]="newOrgInfo.AreaName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Village : </label>
+                            <input class="form-control" placeholder="Village" name="VillageName" [(ngModel)]="newOrgInfo.VillageName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>State : </label>
+                            <input class="form-control" placeholder="State" name="StateName" [(ngModel)]="newOrgInfo.StateName">
+                        </div>
+
+                       
+
+                        
+                        <div class="form-group">
+                            <label>District : </label>
+                            <input class="form-control" placeholder="District" name="DistrictName" [(ngModel)]="newOrgInfo.DistrictName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Taluka : </label>
+                            <input class="form-control" placeholder="Taluka" name="TalukaName" [(ngModel)]="newOrgInfo.TalukaName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Pin Code : </label>
+                            <input class="form-control" placeholder="Pin Code" name="Pincode" [(ngModel)]="newOrgInfo.Pincode">
+                        </div>
+
+                        <div class="form-group">
+                            <label>First Owner : </label>
+                            <input class="form-control" placeholder="Area" name="AreaName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Second Owner : </label>
+                            <input class="form-control" placeholder="Area" name="AreaName">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary btn-color btn-bg-color" (click)="SaveNewStockYard()">Submit </button>
+                        <button type="reset" class="btn btn-primary btn-color btn-bg-color">Reset </button>
+                    </form>
+                    <app-error-message></app-error-message>
+                    <app-confirm></app-confirm>
+                </div>

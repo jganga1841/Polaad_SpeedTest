@@ -1,0 +1,218 @@
+<style>
+    #mydiv {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1001;
+        background-color: white;
+        opacity: .8;
+    }
+    
+    .ajax-loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -32px;
+        /* -1 * image width / 2 */
+        margin-top: -32px;
+        /* -1 * image height / 2 */
+        display: block;
+    }
+</style>
+<!-- Navigation -->
+<!--*ngIf=""-->
+
+<div *ngIf="login.isLogin">
+    <div id="mydiv" *ngIf="loader.isLoading">
+        <img src="./images/ajax-loader_1.gif" class="ajax-loader" style="width: 70px; height: 70px" />
+    </div>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <!-- /.navbar-static-side -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".main-menu">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+            <!--<a class="navbar-brand" href="index.html">-->
+            <img alt="polaad_logo" src="./images/polaad_logo.png" class="navbar-brand top" style="padding: 0px">
+            <!--</a>-->
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa-top fa-envelope fw-top"></i> <i class="fa-top fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>Read All Messages</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-messages -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa-top fa-bell fw-top"></i> <i class="fa-top fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fw-top"></i> New Comment
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-twitter fw-top"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-envelope fw-top"></i> Message Sent
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-tasks fw-top"></i> New Task
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fw-top"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa-top fa-user fa-fw-top"></i>
+                    <i class="fa-top fa-caret-down"> </i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <!--<li><a><i class="fa fa-user fa-fw-top"></i>{{username}}</a>
+                    </li>-->
+                    <li><a href="#"><i class="fa fa-user fa-fw-top"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw-top"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a [routerLink]="['/Login']"><i class="fa fa-sign-out fa-fw-top"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+
+
+
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+        <!--<div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <my-menu>
+            </my-menu>
+
+        </div>-->
+        <!-- /.sidebar-collapse -->
+        <!--</div>-->
+        <!-- /.navbar-static-side -->
+    </nav>
+</div>
+
+<!-- /#page-wrapper content here -->
+<div id="page-wrapper">
+    <!--[ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" class="watermark"-->
+
+    <nav class="main-menu " *ngIf="login.isLogin">
+        <my-menu>
+        </my-menu>
+    </nav>
+    <div class="space-6"></div>
+    <router-outlet>
+
+    </router-outlet>
+
+</div>
+
+<div id="page-wrapper" *ngIf="_hideTopbar">
+    <login></login>
+</div>
+
+<!--<footer class="footer-basic-centered">
+			<p class="footer-company-name">Company Name © 2017</p>
+		</footer>-->
+
+
+<!-- /#page-wrapper -->
