@@ -3,12 +3,12 @@
 
 export const sep='/';
 //For Windows Azure server
-//export const gnBaseURL: string="http://stapiservice.azurewebsites.net/api/";    
+export const gnBaseURL: string="http://stapiservice.azurewebsites.net/api/";    
 //For Local Test server
 
 //export const gnBaseURL: string="http://192.168.0.189:64945/api/";      
 
-export const gnBaseURL: string="http://localhost:64942/api/";    
+//export const gnBaseURL: string="http://localhost:64942/api/";    
 
 export const gnOrderBooking = gnBaseURL + "booking/PostNewBooking";
 export const gnViewBooking = gnBaseURL + "booking/GetPendingBookingList";
