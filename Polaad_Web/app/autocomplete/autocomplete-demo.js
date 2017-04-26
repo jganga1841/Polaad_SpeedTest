@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
 var AutocompleteDemo = (function () {
     //[
     //     { id: 1, name: 'Darth Vader' },
@@ -195,18 +195,18 @@ var AutocompleteDemo = (function () {
             this.opened = false;
         }
     };
+    AutocompleteDemo = __decorate([
+        core_1.Component({
+            //moduleId: module.id,
+            selector: 'autocomplete-demo',
+            host: {
+                '(document:click)': 'handleClick($event)',
+            },
+            templateUrl: 'app/autocomplete/autocomplete-demo.html'
+        }), 
+        __metadata('design:paramtypes', [core_1.ElementRef, common_services_1.CommonServices])
+    ], AutocompleteDemo);
     return AutocompleteDemo;
 }());
-AutocompleteDemo = __decorate([
-    core_1.Component({
-        //moduleId: module.id,
-        selector: 'autocomplete-demo',
-        host: {
-            '(document:click)': 'handleClick($event)',
-        },
-        templateUrl: 'app/autocomplete/autocomplete-demo.html'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef, common_services_1.CommonServices])
-], AutocompleteDemo);
 exports.AutocompleteDemo = AutocompleteDemo;
 //# sourceMappingURL=autocomplete-demo.js.map

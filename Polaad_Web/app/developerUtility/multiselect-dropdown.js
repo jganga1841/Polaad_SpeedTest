@@ -14,9 +14,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var forms_1 = require("@angular/forms");
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
 var MULTISELECT_VALUE_ACCESSOR = {
     provide: forms_1.NG_VALUE_ACCESSOR,
     useExisting: core_1.forwardRef(function () { return MultiselectDropdown; }),
@@ -32,13 +32,14 @@ var MultiSelectSearchFilter = (function () {
                 .indexOf((args || '').toLowerCase()) > -1;
         });
     };
+    MultiSelectSearchFilter = __decorate([
+        core_1.Pipe({
+            name: 'searchFilter'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MultiSelectSearchFilter);
     return MultiSelectSearchFilter;
 }());
-MultiSelectSearchFilter = __decorate([
-    core_1.Pipe({
-        name: 'searchFilter'
-    })
-], MultiSelectSearchFilter);
 exports.MultiSelectSearchFilter = MultiSelectSearchFilter;
 var MultiselectDropdown = (function () {
     function MultiselectDropdown(element, differs) {
@@ -178,56 +179,56 @@ var MultiselectDropdown = (function () {
         this.model = [];
         this.onModelChange(this.model);
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], MultiselectDropdown.prototype, "options", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MultiselectDropdown.prototype, "settings", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], MultiselectDropdown.prototype, "texts", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MultiselectDropdown.prototype, "selectionLimitReached", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MultiselectDropdown.prototype, "dropdownClosed", void 0);
+    __decorate([
+        core_1.HostListener('document: click', ['$event.target']), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [HTMLElement]), 
+        __metadata('design:returntype', void 0)
+    ], MultiselectDropdown.prototype, "onClick", null);
+    MultiselectDropdown = __decorate([
+        core_1.Component({
+            selector: 'ss-multiselect-dropdown',
+            providers: [MULTISELECT_VALUE_ACCESSOR],
+            styles: ["\n\t   a { outline: none !important; }\n  "],
+            template: "\n\t<div class=\"dropdown\">\n\t    <button type=\"button\" class=\"dropdown-toggle\" [ngClass]=\"settings.buttonClasses\"\n\t    (click)=\"toggleDropdown()\">{{ title }}&nbsp;<span class=\"caret\"></span></button>\n\t    <ul *ngIf=\"isVisible\" class=\"dropdown-menu\" [class.pull-right]=\"settings.pullRight\" [class.dropdown-menu-right]=\"settings.pullRight\"\n\t    [style.max-height]=\"settings.maxHeight\" style=\"display: block; height: auto; overflow-y: auto;\">\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.enableSearch\">\n\t\t    <div class=\"input-group input-group-sm\">\n\t\t\t<span class=\"input-group-addon\" id=\"sizing-addon3\"><i class=\"fa fa-search\"></i></span>\n\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"{{ texts.searchPlaceholder }}\"\n\t\t\taria-describedby=\"sizing-addon3\" [(ngModel)]=\"searchFilterText\">\n\t\t\t<span class=\"input-group-btn\" *ngIf=\"searchFilterText.length > 0\">\n\t\t\t    <button class=\"btn btn-default\" type=\"button\" (click)=\"clearSearch()\"><i class=\"fa fa-times\"></i></button>\n\t\t\t</span>\n\t\t    </div>\n\t\t</li>\n\t\t<li class=\"dropdown-divider divider\" *ngIf=\"settings.enableSearch\"></li>\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.showCheckAll\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\" (click)=\"checkAll()\">\n\t\t\t<span style=\"width: 16px;\" class=\"glyphicon glyphicon-ok\"></span>\n\t\t\t{{ texts.checkAll }}\n\t\t    </a>\n\t\t</li>\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.showUncheckAll\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\" (click)=\"uncheckAll()\">\n\t\t\t<span style=\"width: 16px;\" class=\"glyphicon glyphicon-remove\"></span>\n\t\t\t{{ texts.uncheckAll }}\n\t\t    </a>\n\t\t</li>\n\t\t<li *ngIf=\"settings.showCheckAll || settings.showUncheckAll\" class=\"dropdown-divider divider\"></li>\n\t\t<li class=\"dropdown-item\" style=\"cursor: pointer;\"  *ngFor=\"let option of options | searchFilter:searchFilterText\" (click)=\"setSelected($event, option)\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\">\n\t\t\t<input *ngIf=\"settings.checkedStyle === 'checkboxes'\" type=\"checkbox\" [checked]=\"isSelected(option)\" />\n\t\t\t<span *ngIf=\"settings.checkedStyle === 'glyphicon'\" style=\"width: 16px;\"\n\t\t\tclass=\"glyphicon\" [class.glyphicon-ok]=\"isSelected(option)\"></span>\n\t\t\t<span *ngIf=\"settings.checkedStyle === 'fontawsome'\" style=\"width: 16px;display: inline-block;\">\n\t\t\t    <i *ngIf=\"isSelected(option)\" class=\"fa fa-check\" aria-hidden=\"true\"></i>\n\t\t\t</span>\n\t\t\t{{ option.name }}\n\t\t    </a>\n\t\t</li>\n\t    </ul>\n\t</div>\n"
+        }), 
+        __metadata('design:paramtypes', [core_1.ElementRef, core_1.IterableDiffers])
+    ], MultiselectDropdown);
     return MultiselectDropdown;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], MultiselectDropdown.prototype, "options", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], MultiselectDropdown.prototype, "settings", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object)
-], MultiselectDropdown.prototype, "texts", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], MultiselectDropdown.prototype, "selectionLimitReached", void 0);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], MultiselectDropdown.prototype, "dropdownClosed", void 0);
-__decorate([
-    core_1.HostListener('document: click', ['$event.target']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [HTMLElement]),
-    __metadata("design:returntype", void 0)
-], MultiselectDropdown.prototype, "onClick", null);
-MultiselectDropdown = __decorate([
-    core_1.Component({
-        selector: 'ss-multiselect-dropdown',
-        providers: [MULTISELECT_VALUE_ACCESSOR],
-        styles: ["\n\t   a { outline: none !important; }\n  "],
-        template: "\n\t<div class=\"dropdown\">\n\t    <button type=\"button\" class=\"dropdown-toggle\" [ngClass]=\"settings.buttonClasses\"\n\t    (click)=\"toggleDropdown()\">{{ title }}&nbsp;<span class=\"caret\"></span></button>\n\t    <ul *ngIf=\"isVisible\" class=\"dropdown-menu\" [class.pull-right]=\"settings.pullRight\" [class.dropdown-menu-right]=\"settings.pullRight\"\n\t    [style.max-height]=\"settings.maxHeight\" style=\"display: block; height: auto; overflow-y: auto;\">\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.enableSearch\">\n\t\t    <div class=\"input-group input-group-sm\">\n\t\t\t<span class=\"input-group-addon\" id=\"sizing-addon3\"><i class=\"fa fa-search\"></i></span>\n\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"{{ texts.searchPlaceholder }}\"\n\t\t\taria-describedby=\"sizing-addon3\" [(ngModel)]=\"searchFilterText\">\n\t\t\t<span class=\"input-group-btn\" *ngIf=\"searchFilterText.length > 0\">\n\t\t\t    <button class=\"btn btn-default\" type=\"button\" (click)=\"clearSearch()\"><i class=\"fa fa-times\"></i></button>\n\t\t\t</span>\n\t\t    </div>\n\t\t</li>\n\t\t<li class=\"dropdown-divider divider\" *ngIf=\"settings.enableSearch\"></li>\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.showCheckAll\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\" (click)=\"checkAll()\">\n\t\t\t<span style=\"width: 16px;\" class=\"glyphicon glyphicon-ok\"></span>\n\t\t\t{{ texts.checkAll }}\n\t\t    </a>\n\t\t</li>\n\t\t<li class=\"dropdown-item\" *ngIf=\"settings.showUncheckAll\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\" (click)=\"uncheckAll()\">\n\t\t\t<span style=\"width: 16px;\" class=\"glyphicon glyphicon-remove\"></span>\n\t\t\t{{ texts.uncheckAll }}\n\t\t    </a>\n\t\t</li>\n\t\t<li *ngIf=\"settings.showCheckAll || settings.showUncheckAll\" class=\"dropdown-divider divider\"></li>\n\t\t<li class=\"dropdown-item\" style=\"cursor: pointer;\"  *ngFor=\"let option of options | searchFilter:searchFilterText\" (click)=\"setSelected($event, option)\">\n\t\t    <a href=\"javascript:;\" role=\"menuitem\" tabindex=\"-1\">\n\t\t\t<input *ngIf=\"settings.checkedStyle === 'checkboxes'\" type=\"checkbox\" [checked]=\"isSelected(option)\" />\n\t\t\t<span *ngIf=\"settings.checkedStyle === 'glyphicon'\" style=\"width: 16px;\"\n\t\t\tclass=\"glyphicon\" [class.glyphicon-ok]=\"isSelected(option)\"></span>\n\t\t\t<span *ngIf=\"settings.checkedStyle === 'fontawsome'\" style=\"width: 16px;display: inline-block;\">\n\t\t\t    <i *ngIf=\"isSelected(option)\" class=\"fa fa-check\" aria-hidden=\"true\"></i>\n\t\t\t</span>\n\t\t\t{{ option.name }}\n\t\t    </a>\n\t\t</li>\n\t    </ul>\n\t</div>\n"
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef,
-        core_1.IterableDiffers])
-], MultiselectDropdown);
 exports.MultiselectDropdown = MultiselectDropdown;
 var MultiselectDropdownModule = (function () {
     function MultiselectDropdownModule() {
     }
+    MultiselectDropdownModule = __decorate([
+        core_1.NgModule({
+            imports: [common_1.CommonModule, forms_1.FormsModule],
+            exports: [MultiselectDropdown],
+            declarations: [MultiselectDropdown, MultiSelectSearchFilter],
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MultiselectDropdownModule);
     return MultiselectDropdownModule;
 }());
-MultiselectDropdownModule = __decorate([
-    core_1.NgModule({
-        imports: [common_1.CommonModule, forms_1.FormsModule],
-        exports: [MultiselectDropdown],
-        declarations: [MultiselectDropdown, MultiSelectSearchFilter],
-    })
-], MultiselectDropdownModule);
 exports.MultiselectDropdownModule = MultiselectDropdownModule;
 //# sourceMappingURL=multiselect-dropdown.js.map

@@ -1,0 +1,425 @@
+<div class="row">
+    <div class="col-lg-12">
+        <!--<h5 class="page-title">Stock Details</h5>-->
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-lg-12">
+        <div class="panel with-nav-tabs panel-default">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1default" data-toggle="tab" (click)="stockUpdateCall()">Daily Stock & Update <i class="fa fa-database" aria-hidden="true" style="height:16px;width: 16px;"></i></a></li>
+                    <li><a href="#tab2default" data-toggle="tab" (click)="stockSummaryCall()">Stock Summary <i class="fa fa-stack-exchange" aria-hidden="true" style="height:16px;width: 16px;"></i> </a></li>
+                    <li><a href="#tab3default" data-toggle="tab" (click)="runningSizeCall()">Running Size <i class="fa fa-link" aria-hidden="true" style="height:16px;width: 16px;" ></i> </a></li>
+                    <li><a href="#tab4default" data-toggle="tab"> Stock As Per Accounts  <i class="fa fa-book" aria-hidden="true" style="height:16px;width: 16px;" ></i> </a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1default">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="top10">
+                                    <!--<label class="control-label-left col-sm-2" for="Location">Location : </label>-->
+                                    <div class="col-sm-4">
+                                        <select class="form-control col-sm-4" required name="LocationId" [(ngModel)]="stockDetailTO.LocationId" (change)="getCompartmentList($event.target.value)">
+                                            <option value="0">Select Location</option>
+                                            <option *ngFor="let locationTO of locationList " [value]="locationTO.Value">{{locationTO.Text}}</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="top10">
+                                    <!--<label class="control-label-left col-sm-2" for="Compartment">Compartment : </label>-->
+                                    <div class="col-sm-4">
+                                        <select class="form-control col-sm-4" required name="CompartmentId" [(ngModel)]="stockDetailTO.CompartmentId" (change)="validateProdAndLoc()">
+                                            <option value="0">Select Compartment</option>
+                                            <option *ngFor="let compartmentTO of compartmentList " [value]="compartmentTO.Value ">{{compartmentTO.Text}}</option>
+                                       </select>
+
+                                    </div>
+                                </div>
+                                <div class="top10 ">
+                                    <!--<label class="control-label-left col-sm-2 " for="Product ">Product Category : </label>-->
+                                    <div class="col-sm-4">
+                                        <select class="form-control col-sm-4 " required name="ProductCategoryId " [(ngModel)]="stockDetailTO.ProdCatId " (change)="validateProdAndLoc(); getLastUpdatedStockDate()">
+                                            <option value="0">Select Product Category</option>
+                                            <option *ngFor="let productCatTo of productCategoryList " [value]="productCatTo.Value ">{{productCatTo.Text}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row top10" *ngIf="isShow">
+                            <div class="col-lg-12">
+                                <div class="alert alert-warning" style="padding:1px; margin-left:13px;">
+                                    <strong> Last Stock Update! </strong>{{lastUpdatedstockDate}}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row top10 ">
+                            <div class="col-lg-12 ">
+                                <div id="myModal" class="modal fade" data-backdrop="static">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title">Add the Stock (No. of Bundles)</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row ">
+                                                    <div class="col-lg-12">
+                                                        <div class="col-sm-6" *ngIf="isShow">
+                                                            <div class="alert alert-warning" style="padding:1px; margin:0px;">
+                                                                <strong> Last Stock Update! </strong>{{lastUpdatedstockDate}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label class="control-label col-sm-3" style="margin-right:25px;">Compartment:</label>
+                                                            <label class="control-label col-sm-3">{{selectedCompartment}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 top10">
+                                                        <div class="table-responsive ">
+                                                            <table class="table table-bordered table-hover">
+                                                                <thead>
+                                                                    <tr class="bg-info">
+                                                                        <th style="padding: 3px">Size/Specs</th>
+                                                                        <th *ngFor="let prodSpec of productSpec" style="padding: 3px">{{prodSpec}}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!--<tr *ngFor=" let materialTo of materialSpecAndCatList ">
+                                                                        <td style="padding: 3px">
+                                                                            {{materialTo.MaterialCategory}}
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="StraightQty" type="number" class="form-control" placeholder="{{materialTo.StraightQty}}" [(ngModel)]="materialTo.StraightQty" (click)="selectOnClick($event)">
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="BendQty" type="number" class="form-control" placeholder="{{materialTo.BendQty}}" [(ngModel)]="materialTo.BendQty" (click)="selectOnClick($event)">
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="RKShortQty" type="number" class="form-control" placeholder="{{materialTo.RKShortQty}}" [(ngModel)]="materialTo.RKShortQty" (click)="selectOnClick($event)">
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="RKLongQty" type="number" class="form-control" placeholder="{{materialTo.RKLongQty}}" [(ngModel)]="materialTo.RKLongQty" (click)="selectOnClick($event)">
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="TukadaQty" type="number" class="form-control" placeholder="{{materialTo.TukadaQty}}" [(ngModel)]="materialTo.TukadaQty" (click)="selectOnClick($event)">
+                                                                        </td>
+                                                                        <td style="padding: 3px">
+                                                                            <input name="CoilQty" type="number" class="form-control" placeholder="{{materialTo.CoilQty}}" [(ngModel)]="materialTo.CoilQty" (click)="selectOnClick($event)">
+                                                                        </td>-->
+                                                                    <!--<tr *ngFor=" let key of keys ">
+                                                                        <td *ngFor=" let stockDetTo of groupedStockList[key] ;">
+                                                                            <p *ngIf="stockDetTo == key"> {{stockDetTo}} </p>
+                                                                            <p *ngIf="stockDetTo != key">
+                                                                                <input name="stockDetTo" type="number" class="form-control" placeholder="{{stockDetTo}}" [(ngModel)]="stockDetTo[0]">
+                                                                            </p>
+                                                                        </td>-->
+                                                                    <tr *ngFor=" let key of keys ">
+                                                                        <td style="padding: 3px" *ngFor="let stockDetTo of groupedStockList[key];">
+                                                                            <p class="nopadding" *ngIf="stockDetTo.value == key"> {{stockDetTo.value}} </p>
+                                                                            <p class="nopadding" *ngIf="stockDetTo.value != key">
+                                                                                <input name="stockDetTo" type="number" class="form-control" placeholder="{{stockDetTo.value}}" [(ngModel)]="stockDetTo.value" (click)="selectOnClick($event)">
+                                                                            </p>
+                                                                        </td>
+
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="postStockCatAndSpecDetails()">Submit</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <div class=" form-group col-sm-3 ">
+                                        <button type="button " class="btn btn-primary " data-toggle="modal" data-target="#myModal" [disabled]="!isvalidateMaterialAction" (click)="getMaterialAndConfigure()">Add Material Stock</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.Stock Summary Tab -->
+                    <div class="tab-pane fade" id="tab2default">
+
+                        <!--sectioon-->
+                        <div class="row top10">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Stock Summary Details(Values in MT)
+                                    </div>
+                                    <div class="panel-body ">
+                                        <div class="row" *ngIf="!isUpdate">
+                                            <div class="col-lg-12">
+                                                <div class="alert alert-warning" style="padding:1px; margin:0px;">
+                                                    <strong> Warning! </strong>Todays Stock Is Not Updated.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-lg-12 top10" *ngIf="isUpdate">
+                                                <div class="table-responsive ">
+                                                    <table class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr class="bg-info">
+                                                                <th style="padding: 3px">Size/Specs</th>
+                                                                <th *ngFor="let stockSpec of stockSpec" style="padding: 3px">{{stockSpec}}</th>
+                                                                <th><b>Total</b></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor=" let materialTo of MaterialSizeSpecLst ">
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.MaterialCategory}}
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.StraightQty}}
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.BendQty}}
+                                                                    <!--<input name="BendQty" type="number" class="form-control" placeholder="{{materialTo.BendQty}}" [(ngModel)]="materialTo.BendQty">-->
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.RKShortQty}}
+                                                                    <!--<input name="RKShortQty" type="number" class="form-control" placeholder="{{materialTo.RKShortQty}}" [(ngModel)]="materialTo.RKShortQty">-->
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.RKLongQty}}
+                                                                    <!--<input name="RKLongQty" type="number" class="form-control" placeholder="{{materialTo.RKLongQty}}" [(ngModel)]="materialTo.RKLongQty">-->
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.TukadaQty}}
+                                                                    <!--<input name="TukadaQty" type="number" class="form-control" placeholder="{{materialTo.TukadaQty}}" [(ngModel)]="materialTo.TukadaQty">-->
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.CoilQty}}
+                                                                    <!--<input name="CoilQty" type="number" class="form-control" placeholder="{{materialTo.CoilQty}}" [(ngModel)]="materialTo.CoilQty">-->
+                                                                </td>
+                                                                <td style="padding: 3px">
+                                                                    {{materialTo.TotalValue | number : '1.0-2'}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding: 3px"><b>Total</b></td>
+                                                                <td style="padding: 3px">{{totalStraightQty | number : '1.0-2'}}</td>
+                                                                <td style="padding: 3px">{{totalBendQty | number : '1.0-2'}}</td>
+                                                                <td style="padding: 3px">{{totalRKShortQty | number : '1.0-2'}}</td>
+                                                                <td style="padding: 3px">{{totalRKLongQty | number : '1.0-2'}}</td>
+                                                                <td style="padding: 3px">{{totalTukadaQty | number : '1.0-2'}}</td>
+                                                                <td style="padding: 3px">{{totalCoilQty | number : '1.0-2'}}</td>
+                                                                <td>{{total | number : '1.0-2'}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="row">
+                                            <div class="col-lg-12">
+                                             <button type="button" class="btn btn-primary" (click)="postStockSummaryDetails()">Submit</button>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="isUpdate">
+                            <div class="col-lg-12">
+                                <div class="col-sm-2">
+
+                                <button type="button" class="btn btn-primary" (click)="postStockSummaryDetails()" [disabled]="isConfirmed">Confirm</button>
+                                </div>
+                                <div class="col-sm-6">
+                                     <label class="control-label-left col-sm-5">Is Confirmed:</label>
+                                        <label class="control-label-left col-sm-3 fontweight">
+                                                            <p *ngIf="isConfirmed">Yes</p> 
+                                                            <p *ngIf="!isConfirmed">No</p>
+                                                        </label>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- /.Stock Summary Tab -->
+                    <div class="tab-pane fade" id="tab3default">
+                        <div class="row top10">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Running Size Details
+                                        <div style="float: right">
+                                            (Stock Available Till 4.00 PM)
+                                        </div>
+                                    </div>
+                                    <div class="panel-body ">
+
+                                        <div class="row top10">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover">
+                                                        <thead class="bg-info">
+                                                            <tr>
+                                                                <th>
+                                                                    Location
+                                                                </th>
+                                                                <th>
+                                                                    Size
+                                                                </th>
+                                                                <th>
+                                                                    Running Quantity(In MT)
+                                                                </th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let dailyrunningstock of dailyRunningStockDetailsTOList">
+                                                                <td>{{dailyrunningstock.LocationName}}</td>
+                                                                <td>
+                                                                    {{dailyrunningstock.MaterialDesc}}
+                                                                </td>
+                                                                <td>
+                                                                    {{dailyrunningstock.TotalStock}}
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row top10">
+                                            <div class="col-lg-12">
+                                                <div class="top10">
+                                                    <div class="col-sm-4">
+                                                        <select class="form-control col-sm-4" required name="LocationId" [(ngModel)]="locationTO">
+                                                                        <option value="0">Select Location</option>
+                                                                        <option *ngFor="let locationTO of locationList " [ngValue]="locationTO">{{locationTO.Text}}</option>
+                                                                    </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="top10">
+                                                    <div class="col-sm-3">
+                                                        <select name="ddlMaterial" class="form-control col-sm-3" [(ngModel)]="materialTO" required>
+                                                                        <option value="0">Select Size</option>																		
+                                                                        <option *ngFor="let materialTO of materialList" [ngValue]="materialTO" >{{materialTO.Text}}</option>
+																	</select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="top10 ">
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control col-sm-4" type="number" name="runningQty" placeholder="Enter Running Qty In MT" required [(ngModel)]="runningStockDetailTO.TotalStock" required/>
+
+                                                    </div>
+                                                </div>
+                                                <div class="top10 ">
+                                                    <div class="col-sm-2">
+                                                        <button type="submit " class="btn btn-primary" (click)="addRunningMaterial(locationTO,materialTO,runningStockDetailTO)">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row top10">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover">
+                                                        <thead class="bg-info">
+                                                            <tr>
+                                                                <th>
+                                                                    Location
+                                                                </th>
+                                                                <th>
+                                                                    Size
+                                                                </th>
+                                                                <th>
+                                                                    Running Quantity
+                                                                </th>
+                                                                <th>
+                                                                    Action
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let runningstock of runningStockDetailsTOList">
+                                                                <td>{{runningstock.LocationName}}</td>
+                                                                <td>
+                                                                    {{runningstock.MaterialDesc}}
+                                                                </td>
+                                                                <td>
+                                                                    {{runningstock.TotalStock}}
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-link" role="link" type="submit" (click)="deleteMaterial($event,runningstock)">Delete</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="button" class="btn btn-primary" (click)="postRunningSizeDetails()">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--sectioon-->
+
+                    </div>
+
+ <div class="tab-pane fade" id="tab4default">
+                        <div class="row top10">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Todays Stock As Per Accountant                                        
+                                    </div>
+                                    <div class="panel-body ">
+
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--sectioon-->
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <app-error-message></app-error-message>
+    <app-confirm></app-confirm>
+</div>

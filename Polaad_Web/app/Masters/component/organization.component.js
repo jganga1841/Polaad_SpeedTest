@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var organizationInfo_1 = require("app/Masters/model/organizationInfo");
-var addressInfo_1 = require("app/Masters/model/addressInfo");
-var organizationService_1 = require("app/Masters/services/organizationService");
-var errorMessage_1 = require("app/error/errorMessage");
+var core_1 = require('@angular/core');
+var organizationInfo_1 = require('app/Masters/model/organizationInfo');
+var addressInfo_1 = require('app/Masters/model/addressInfo');
+var organizationService_1 = require('app/Masters/services/organizationService');
+var errorMessage_1 = require('app/error/errorMessage');
 var OrganizationComponent = (function () {
     function OrganizationComponent(
         //private _confirmService:ConfirmService,
@@ -48,19 +48,19 @@ var OrganizationComponent = (function () {
         //     },
         //     err=>{});
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], OrganizationComponent.prototype, "errorMsg", void 0);
+    OrganizationComponent = __decorate([
+        core_1.Component({
+            selector: 'my-org',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/Masters/organizationGui.html'
+        }), 
+        __metadata('design:paramtypes', [organizationService_1.OrganizationService])
+    ], OrganizationComponent);
     return OrganizationComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], OrganizationComponent.prototype, "errorMsg", void 0);
-OrganizationComponent = __decorate([
-    core_1.Component({
-        selector: 'my-org',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/Masters/organizationGui.html'
-    }),
-    __metadata("design:paramtypes", [organizationService_1.OrganizationService])
-], OrganizationComponent);
 exports.OrganizationComponent = OrganizationComponent;
 //# sourceMappingURL=organization.component.js.map

@@ -1,0 +1,300 @@
+<div class="row" *ngIf="isLoading">
+    <div class="col-lg-12">
+        <h5 class="page-title">{{headMessage}}</h5>
+    </div>
+</div>
+
+
+<!--<div class="row top10" *ngIf="isDelivery">
+    <div class="col-lg-12">
+        <div class="table-responsive ">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="bg-info">
+                        <th>Slip No#</th>
+                        <th>C&F</th>
+                        <th>Vehicle No.</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Confirm Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let loadingToInfo of deliverySlipList ">
+                        <td>{{loadingToInfo.LoadingSlipNo}}</td>
+                        <td>{{loadingToInfo.CnfOrgName}}</td>
+                        <td>{{loadingToInfo.VehicleNo}}</td>
+                        <td>{{loadingToInfo.Qty}}</td>
+                        <!--<td>{{loadingSlipInfo.​TotalLoadingQty​}}</td>-->
+<!--<td>{{loadingToInfo.StatusDesc}}</td>
+                        <td>{{loadingToInfo.LoadingDatetimeStr}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>-->
+
+<div class="row top10" *ngIf="isDelivery">
+    <div class="col-lg-12">
+        <h5 class="page-title">Waiting for Confirmation</h5>
+    </div>
+</div>
+
+<div class="row top10" *ngIf="isLoading">
+    <div class="form-group col-xs-6 col-sm-6 " *ngIf="isShowCnFLst">
+        <select class="form-control" [(ngModel)]="cnfOrgId" (change)="onddlCnFChage($event.target.value)">
+            <option [value]="0" selected>Select  C&F</option>
+            <option *ngFor="let CnFInfo of cnfList" [value]="CnFInfo.Value" >{{CnFInfo.Text}}</option>
+        </select>
+    </div>
+    <div class="form-group col-xs-6 col-sm-6">
+        <select class="form-control" (change)="onddlstatusChage($event.target.value)" [(ngModel)]="statusId">
+            <option  value="0">Select Status</option>
+            <option  *ngFor="let TxnType of txnTypeList"   [value]="TxnType.Value" >{{TxnType.Text}}</option>
+        </select>
+    </div>
+</div>
+<div class="row" *ngIf="isLoading">
+    <div class="form-group col-xs-6 col-sm-6">
+        <div class="input-group date  col-sm-12">
+            <input class="form-control" [(ngModel)]="fromDate" style="background-color: white; height: 36px;" type="text" id="dtFromDt" name="dtFromDt" ng2-datetime-picker date-format="YYYY-MM-DD" readonly close-on-select="true" (ngModelChange)="onDateSelection(fromDate,toDate)"
+                [show-close-layer]="true" year="2014" month="12" day="31" hour="23" minute='59'>
+            <label class="input-group-addon btn" for="dtFromDt" style="padding: 1px 0px;font-size: 19px; height: 36px;">
+                <span class="fa fa-calendar" style="padding-top: 7px; "></span>
+            </label>
+        </div>
+    </div>
+    <div class="form-group col-xs-6 col-sm-6">
+        <div class="input-group date  col-sm-12">
+            <input class="form-control" [(ngModel)]="toDate" style="background-color: white; height: 36px;" type="text" id="dtToDt" name="dtToDt" ng2-datetime-picker date-format="YYYY-MM-DD" readonly close-on-select="true" (ngModelChange)="onDateSelection(fromDate,toDate)"
+                [show-close-layer]="true" year="2014" month="12" day="31" hour="23" minute='59'>
+            <label class="input-group-addon btn" for="dtToDt" style="padding: 1px 0px;font-size: 19px; height: 36px;">
+                <span class="fa fa-calendar" style="padding-top: 7px;"></span>
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row top10">
+    <div class="col-lg-12">
+        <div class="table-responsive ">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="bg-info">
+                        <th>Slip No#</th>
+                        <th>C&F</th>
+                        <th>Vehicle No.</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Status Reason</th>
+                        <th colspan="2" style="text-align: center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let loadingToInfo of loadingSlipList ">
+                        <td>{{loadingToInfo.LoadingSlipNo}}</td>
+                        <td>{{loadingToInfo.CnfOrgName}}</td>
+                        <td>{{loadingToInfo.VehicleNo}}</td>
+                        <td>{{loadingToInfo.Qty}}</td>
+                        <!--<td>{{loadingSlipInfo.​TotalLoadingQty​}}</td>-->
+                        <td>{{loadingToInfo.StatusDesc}}</td>
+                        <td>{{loadingToInfo.StatusReason}}</td>
+                        <td><input class="btn-primary" type="button" value="View Details" (click)="ViewLoadingSlipDetails(loadingToInfo)"></td>
+                        <td><input class="btn-primary" type="button" value="Print" (click)="PrintLoadingSlipDetails(loadingToInfo)"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div *ngIf="isView">
+<print-loading-slip ></print-loading-slip>
+</div>-->
+<div id="print-section" *ngIf="isView">
+    <!--<div  id="print-section">-->
+    <div *ngFor="let loadingSlipTo of loadingToById.LoadingSlipList">
+        <div class="row">
+            <div class="col-lg-12">
+                <h5 class="page-title" style="text-align:center">Loading Slip</h5>
+            </div>
+        </div>
+        <!--<div class="row col-lg-12 top10" *ngIf="lblMessage != undefined">
+        <div class=" alert-success">
+            <strong class="col-sm-1">Warning : </strong>
+            <label class="control-label-left col-sm-11 fontweight ">{{lblMessage}}</label>
+        </div>
+</div>-->
+        <div class="row">
+            <!--<div class="row">-->
+            <div class="col-lg-12" style="float: center">
+                <table class="" style="width:100%; max-width: 100%">
+                    <tr>
+                        <td style="font-weight:bold"> Date:</td>
+                        <td> {{loadingToById.CreatedOnStr}}</td>
+                        <td style="font-weight:bold">Slip No:</td>
+                        <td>{{loadingSlipTo.LoadingSlipNo}}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Broker Name:</td>
+                        <td> {{loadingToById.CnfOrgName}}
+                        </td>
+                        <td style="font-weight:bold">Booking Rate:</td>
+                        <td>-
+                            <td>
+                                <!--<td>{{tblLoadingSlipDtlTO.BookingRate |currency : 'INR': true:'1.0-0'}} </td>-->
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Party Name:</td>
+                        <td>{{loadingSlipTo.DealerOrgName}}</td>
+                        <td style="font-weight:bold">Transport:</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Address</td>
+                        <td>-</td>
+                        <td style="font-weight:bold">BT</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Contact No:</td>
+                        <td>-</td>
+                        <td style="font-weight:bold">Driver Name:</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">CD Structure</td>
+                        <td>{{loadingSlipTo.CdStructure}}
+                        </td>
+                        <td style="font-weight:bold">Freight Charge
+                        </td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold">Vehicle No:</td>
+                        <td>{{loadingSlipTo.VehicleNo}}</td>
+                        <td></td>
+                        <td></td>
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row  page-break top10" id="body_block">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <div class="table-responsive col-sm-12">
+                        <table class="table table-striped table-bordered table-hover" id="print">
+                            <thead>
+                                <tr class="bg-info">
+                                    <th>
+                                        S.No.
+                                    </th>
+                                    <th colspan="4">
+                                        To Load
+                                    </th>
+                                    <th colspan="4">
+                                        To be Loaded
+                                    </th>
+                                    <th>
+                                        P
+                                    </th>
+                                    <th>
+                                        L
+                                    </th>
+                                    <th>
+                                        Rate
+                                    </th>
+                                    <th>
+                                        Remarks
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <td style="padding: 4px">
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Size
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Wt.
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Bundle
+                                    </td>
+                                    <td style="padding: 4px">
+                                        length
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Size
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Wt.
+                                    </td>
+                                    <td style="padding: 4px">
+                                        Bundle
+                                    </td>
+                                    <td style="padding: 4px">
+                                        length
+                                    </td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let loadingSlipExtTo of loadingSlipTo.LoadingSlipExtTOList">
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px">{{loadingSlipExtTo.MaterialDesc}}</td>
+                                    <td style="padding: 4px">{{loadingSlipExtTo.LoadingQty}}</td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px">{{loadingSlipExtTo.MaterialDesc}}</td>
+                                    <td style="padding: 4px">{{loadingSlipExtTo.LoadingQty}}</td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                    <td style="padding: 4px"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-sm-4" style="float:right">
+                    <table class="table  table-bordered" style="width: 300px;">
+                        <tr style="text-align: center;font-weight: bold">
+                            <td style="padding: 0px">Final Dispatch:</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0px">Name:</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0px">Sign:</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    Note:________________________________ _____________________________________ _____________________________________
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

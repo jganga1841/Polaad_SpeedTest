@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var auth_guard_1 = require("app/gaurds/auth.guard");
-var sharedService_1 = require("app/common/services/sharedService");
-var login_services_1 = require("app/login/login.services");
-var userTO_1 = require("app/user/model/userTO");
+var sharedService_1 = require('app/common/services/sharedService');
+var login_services_1 = require('app/login/login.services');
+var userTO_1 = require('app/user/model/userTO');
 var AppComponent = (function () {
     //    private get _hideTopbar() : boolean {
     //        return this._data.get('hideTopbar');
@@ -39,16 +39,15 @@ var AppComponent = (function () {
         //       this.username==null;
         //   }
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            //[GJ] : Call the login component on first call
+            templateUrl: './app/app.component.html'
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, login_services_1.AuthenticationService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        //[GJ] : Call the login component on first call
-        templateUrl: './app/app.component.html'
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        login_services_1.AuthenticationService])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

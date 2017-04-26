@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="Cache-Control" content="public,must-revalidate" />
     <title>Polaad</title>
+
+
 
     <!-- Bootstrap Core CSS -->
     <!--<link href="css/bootstrap.css" rel="stylesheet">-->
@@ -81,32 +84,32 @@
     <!--<script src="node_modules/angular2-bootstrap-confirm/position/index.js"></script>
     <script src="node_modules/angular2-bootstrap-confirm/dist/umd/angular2-bootstrap-confirm.js"></script>-->
     <script>
-        // System.config({
-        //     transpiler: 'typescript',
-        //     typescriptOptions: {
-        //         emitDecoratorMetadata: true
-        //     },
-        //     packages: {
-        //         'app': {
-        //             defaultExtension: 'js'
-        //         }
-        //     },
-        //     map: {
-        //         'app': './app'
-        //     }
-        // });
-        // System.import('app/main')
-        //     .then(null, console.error.bind(console));
         System.config({
+            transpiler: 'typescript',
+            typescriptOptions: {
+                emitDecoratorMetadata: true
+            },
             packages: {
-                app: {
-                    format: 'dashboard.component',
+                'app': {
                     defaultExtension: 'js'
                 }
+            },
+            map: {
+                'app': './app'
             }
         });
-        System.import('app/boot')
+        System.import('app/main')
             .then(null, console.error.bind(console));
+        // System.config({
+        //     packages: {
+        //         app: {
+        //             format: 'dashboard.component',
+        //             defaultExtension: 'js'
+        //         }
+        //     }
+        // });
+        // System.import('app/boot')
+        //     .then(null, console.error.bind(console));
     </script>
     <!--<link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />-->
     <!--<script src="https://unpkg.com/zone.js/dist/long-stack-trace-zone.js"></script>-->

@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
-var myGlobalVal = require("app/global");
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var Rx_1 = require('rxjs/Rx');
+var myGlobalVal = require('app/global');
 var LoadingConfiguratorService = (function () {
     function LoadingConfiguratorService(http) {
         this.http = http;
@@ -33,11 +33,11 @@ var LoadingConfiguratorService = (function () {
             .map(function (res) { return res.json(); })
             .catch(function (error) { return Rx_1.Observable.throw(alert(error.json().error), error.json().error || 'Server error'); });
     };
+    LoadingConfiguratorService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], LoadingConfiguratorService);
     return LoadingConfiguratorService;
 }());
-LoadingConfiguratorService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], LoadingConfiguratorService);
 exports.LoadingConfiguratorService = LoadingConfiguratorService;
 //# sourceMappingURL=loading_configurator.service.js.map

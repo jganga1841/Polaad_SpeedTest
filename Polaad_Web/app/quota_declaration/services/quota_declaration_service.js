@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 // Imports
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var Rx_1 = require('rxjs/Rx');
 // Import RxJs required methods
-require("rxjs/add/operator/map");
-require("rxjs/add/operator/catch");
-var myGlobalKey = require("app/global");
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/catch');
+var myGlobalKey = require('app/global');
 var QuotaDeclarationService = (function () {
     // Resolve HTTP using the constructor
     function QuotaDeclarationService(http) {
@@ -64,11 +64,11 @@ var QuotaDeclarationService = (function () {
             .map(function (res) { return res.json(); }) // ...and calling .json() on the response to return data
             .catch(function (error) { return Rx_1.Observable.throw(error.json().error || 'Server error'); }); //...errors if any
     };
+    QuotaDeclarationService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], QuotaDeclarationService);
     return QuotaDeclarationService;
 }());
-QuotaDeclarationService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], QuotaDeclarationService);
 exports.QuotaDeclarationService = QuotaDeclarationService;
 //# sourceMappingURL=quota_declaration_service.js.map

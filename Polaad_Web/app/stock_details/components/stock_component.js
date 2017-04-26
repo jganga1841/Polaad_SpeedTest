@@ -8,17 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
-var common_Information_1 = require("app/common/model/common_Information");
-var stock_services_1 = require("app/stock_details/services/stock_services");
-var stockTO_1 = require("app/stock_details/model/stockTO");
-var stockTO_2 = require("app/stock_details/model/stockTO");
-var errorMessage_1 = require("app/error/errorMessage");
-var confirm_service_1 = require("app/error/confirm.service");
-var sharedService_1 = require("app/common/services/sharedService");
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
+var common_Information_1 = require('app/common/model/common_Information');
+var stock_services_1 = require('app/stock_details/services/stock_services');
+var stockTO_1 = require('app/stock_details/model/stockTO');
+var stockTO_2 = require('app/stock_details/model/stockTO');
+var errorMessage_1 = require('app/error/errorMessage');
+var confirm_service_1 = require('app/error/confirm.service');
+var sharedService_1 = require('app/common/services/sharedService');
 var platform_browser_1 = require("@angular/platform-browser");
-var login_services_1 = require("app/login/login.services");
+var login_services_1 = require('app/login/login.services');
 var StockDetailsComponent = (function () {
     function StockDetailsComponent(ss, commonServices, _sanitizer, stockServices, authLoginServices, _confirmService) {
         var _this = this;
@@ -446,25 +446,20 @@ var StockDetailsComponent = (function () {
             _this.ss.hideLoader();
         });
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], StockDetailsComponent.prototype, "errorMsg", void 0);
+    StockDetailsComponent = __decorate([
+        core_1.Component({
+            selector: 'loading-slip',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/stock_details/stock_details.html',
+            providers: [confirm_service_1.ConfirmService]
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, common_services_1.CommonServices, platform_browser_1.DomSanitizer, stock_services_1.StockDetailsServices, login_services_1.AuthenticationService, confirm_service_1.ConfirmService])
+    ], StockDetailsComponent);
     return StockDetailsComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], StockDetailsComponent.prototype, "errorMsg", void 0);
-StockDetailsComponent = __decorate([
-    core_1.Component({
-        selector: 'loading-slip',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/stock_details/stock_details.html',
-        providers: [confirm_service_1.ConfirmService]
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        common_services_1.CommonServices,
-        platform_browser_1.DomSanitizer,
-        stock_services_1.StockDetailsServices,
-        login_services_1.AuthenticationService,
-        confirm_service_1.ConfirmService])
-], StockDetailsComponent);
 exports.StockDetailsComponent = StockDetailsComponent;
 //# sourceMappingURL=stock_component.js.map

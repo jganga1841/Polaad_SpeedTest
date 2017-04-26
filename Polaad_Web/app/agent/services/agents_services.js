@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var Rx_1 = require("rxjs/Rx");
-var http_1 = require("@angular/http");
-var myGlobalConst = require("app/global");
+var core_1 = require('@angular/core');
+var Rx_1 = require('rxjs/Rx');
+var http_1 = require('@angular/http');
+var myGlobalConst = require('app/global');
 var AgentsServices = (function () {
     function AgentsServices(http) {
         this.http = http;
@@ -58,11 +58,11 @@ var AgentsServices = (function () {
         //         , {DealerId :4, BookingDate: new Date(), BookingQty:10, BookingRate:460, DeliveryDays:10, NoOfDeliveries:1,OrderDetailsInfo: null}
         //         ];
     };
+    AgentsServices = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], AgentsServices);
     return AgentsServices;
 }());
-AgentsServices = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], AgentsServices);
 exports.AgentsServices = AgentsServices;
 //# sourceMappingURL=agents_services.js.map

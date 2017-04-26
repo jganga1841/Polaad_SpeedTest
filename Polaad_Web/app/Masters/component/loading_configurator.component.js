@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
-var common_Information_1 = require("app/common/model/common_Information");
-var loading_configurator_service_1 = require("app/Masters/services/loading_configurator.service");
-var loading_configuratorTO_1 = require("app/Masters/model/loading_configuratorTO");
-var errorMessage_1 = require("app/error/errorMessage");
-var confirm_service_1 = require("app/error/confirm.service");
-var sharedService_1 = require("app/common/services/sharedService");
-var login_services_1 = require("app/login/login.services");
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
+var common_Information_1 = require('app/common/model/common_Information');
+var loading_configurator_service_1 = require('app/Masters/services/loading_configurator.service');
+var loading_configuratorTO_1 = require('app/Masters/model/loading_configuratorTO');
+var errorMessage_1 = require('app/error/errorMessage');
+var confirm_service_1 = require('app/error/confirm.service');
+var sharedService_1 = require('app/common/services/sharedService');
+var login_services_1 = require('app/login/login.services');
 var LoadingConfiguratorComponent = (function () {
     function LoadingConfiguratorComponent(ss, loadingConfiguratorServices, authLoginServices, _confirmService, commonServices) {
         this.ss = ss;
@@ -297,24 +297,20 @@ var LoadingConfiguratorComponent = (function () {
     LoadingConfiguratorComponent.prototype.selectOnClick = function ($event) {
         $event.target.select();
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], LoadingConfiguratorComponent.prototype, "errorMsg", void 0);
+    LoadingConfiguratorComponent = __decorate([
+        core_1.Component({
+            selector: 'loading-configurator',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/Masters/loading_configurator.html',
+            providers: [confirm_service_1.ConfirmService]
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, loading_configurator_service_1.LoadingConfiguratorService, login_services_1.AuthenticationService, confirm_service_1.ConfirmService, common_services_1.CommonServices])
+    ], LoadingConfiguratorComponent);
     return LoadingConfiguratorComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], LoadingConfiguratorComponent.prototype, "errorMsg", void 0);
-LoadingConfiguratorComponent = __decorate([
-    core_1.Component({
-        selector: 'loading-configurator',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/Masters/loading_configurator.html',
-        providers: [confirm_service_1.ConfirmService]
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        loading_configurator_service_1.LoadingConfiguratorService,
-        login_services_1.AuthenticationService,
-        confirm_service_1.ConfirmService,
-        common_services_1.CommonServices])
-], LoadingConfiguratorComponent);
 exports.LoadingConfiguratorComponent = LoadingConfiguratorComponent;
 //# sourceMappingURL=loading_configurator.component.js.map

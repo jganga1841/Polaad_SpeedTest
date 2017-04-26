@@ -11,9 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require("@angular/core");
-var position_1 = require("./position");
-var tooltip_options_class_1 = require("./tooltip-options.class");
+var core_1 = require('@angular/core');
+var position_1 = require('./position');
+var tooltip_options_class_1 = require('./tooltip-options.class');
 var TooltipContainer = (function () {
     function TooltipContainer(element, options) {
         this.element = element;
@@ -36,16 +36,16 @@ var TooltipContainer = (function () {
         this.left = '-1000px';
         this.hostEl = hostEl;
     };
+    TooltipContainer = __decorate([
+        core_1.Component({
+            selector: 'tooltip-container',
+            //directives: [NgClass, NgStyle],
+            template: "<div class=\"tooltip\" role=\"tooltip\"\n     [ngStyle]=\"{top: top, left: left, display: display}\"\n     [ngClass]=\"classMap\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">\n        {{content}}\n      </div>\n    </div>"
+        }),
+        __param(1, core_1.Inject(tooltip_options_class_1.TooltipOptions)), 
+        __metadata('design:paramtypes', [core_1.ElementRef, tooltip_options_class_1.TooltipOptions])
+    ], TooltipContainer);
     return TooltipContainer;
 }());
-TooltipContainer = __decorate([
-    core_1.Component({
-        selector: 'tooltip-container',
-        //directives: [NgClass, NgStyle],
-        template: "<div class=\"tooltip\" role=\"tooltip\"\n     [ngStyle]=\"{top: top, left: left, display: display}\"\n     [ngClass]=\"classMap\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">\n        {{content}}\n      </div>\n    </div>"
-    }),
-    __param(1, core_1.Inject(tooltip_options_class_1.TooltipOptions)),
-    __metadata("design:paramtypes", [core_1.ElementRef, tooltip_options_class_1.TooltipOptions])
-], TooltipContainer);
 exports.TooltipContainer = TooltipContainer;
 //# sourceMappingURL=tooltip-container.component.js.map

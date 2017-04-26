@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var login_services_1 = require("./login.services");
-var userTO_1 = require("app/user/model/userTO");
-var loginTO_1 = require("app/user/model/loginTO");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var login_services_1 = require('./login.services');
+var userTO_1 = require('app/user/model/userTO');
+var loginTO_1 = require('app/user/model/loginTO');
 var auth_guard_1 = require("app/gaurds/auth.guard");
 //import { GeolocationService } from 'app/common/services/geolocation.service';
 //import { MapsService } from 'app/common/services/maps.service';
@@ -82,16 +82,14 @@ var LoginComponent = (function () {
             _this.callLoginService();
         }, function () { });
     };
+    LoginComponent = __decorate([
+        core_1.Component({
+            selector: "login",
+            templateUrl: 'app/login/login.component.html',
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, login_services_1.AuthenticationService])
+    ], LoginComponent);
     return LoginComponent;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        selector: "login",
-        templateUrl: 'app/login/login.component.html',
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router,
-        login_services_1.AuthenticationService])
-], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

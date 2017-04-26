@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var NgTransclude = (function () {
     function NgTransclude(viewRef) {
         this.viewRef = viewRef;
@@ -29,14 +29,14 @@ var NgTransclude = (function () {
         enumerable: true,
         configurable: true
     });
+    NgTransclude = __decorate([
+        core_1.Directive({
+            selector: '[ngTransclude]',
+        }),
+        __param(0, core_1.Inject(core_1.ViewContainerRef)), 
+        __metadata('design:paramtypes', [core_1.ViewContainerRef])
+    ], NgTransclude);
     return NgTransclude;
 }());
-NgTransclude = __decorate([
-    core_1.Directive({
-        selector: '[ngTransclude]',
-    }),
-    __param(0, core_1.Inject(core_1.ViewContainerRef)),
-    __metadata("design:paramtypes", [core_1.ViewContainerRef])
-], NgTransclude);
 exports.NgTransclude = NgTransclude;
 //# sourceMappingURL=IAttribute.js.map

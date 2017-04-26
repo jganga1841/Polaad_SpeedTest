@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var TooltipOptions = (function () {
     function TooltipOptions(options) {
         Object.assign(this, options);
     }
+    TooltipOptions = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [Object])
+    ], TooltipOptions);
     return TooltipOptions;
 }());
-TooltipOptions = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [Object])
-], TooltipOptions);
 exports.TooltipOptions = TooltipOptions;
 //# sourceMappingURL=tooltip-options.class.js.map

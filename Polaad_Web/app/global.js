@@ -92,24 +92,23 @@ exports.gnGetSuperwisorListForDropDown = exports.gnBaseURL + "LoadSlip/GetSuperw
 exports.gnPostAllocateSupervisor = exports.gnBaseURL + "LoadSlip/PostLoadingSuperwisorDtl";
 exports.gnGetLastUpdatedStockDate = exports.gnBaseURL + "Stock/GetLastUpdatedStockDate?compartmentId=";
 exports.gnIsDeclaredTodayLoadingQuota = exports.gnBaseURL + "LoadSlip/IsLoadingQuotaDeclaredForTheDate";
-var loadingSequenceName;
 (function (loadingSequenceName) {
     loadingSequenceName[loadingSequenceName["BOTTOM"] = "Bottom"] = "BOTTOM";
     loadingSequenceName[loadingSequenceName["MIDDLE1"] = "Middle1"] = "MIDDLE1";
     loadingSequenceName[loadingSequenceName["MIDDLE2"] = "Middle2"] = "MIDDLE2";
     loadingSequenceName[loadingSequenceName["MIDDLE3"] = "Middle3"] = "MIDDLE3";
     loadingSequenceName[loadingSequenceName["TOP"] = "Top"] = "TOP";
-})(loadingSequenceName = exports.loadingSequenceName || (exports.loadingSequenceName = {}));
-var ScreenName;
+})(exports.loadingSequenceName || (exports.loadingSequenceName = {}));
+var loadingSequenceName = exports.loadingSequenceName;
 (function (ScreenName) {
     ScreenName[ScreenName["LOADINGSLIP"] = "LoadingSlip"] = "LOADINGSLIP";
     ScreenName[ScreenName["DELIVERY"] = "Delivery"] = "DELIVERY";
     ScreenName[ScreenName["ViewBooking"] = "ViewBooking"] = "ViewBooking";
     ScreenName[ScreenName["BookingConfirmation"] = "BookingConfirmation"] = "BookingConfirmation";
     ScreenName[ScreenName["BookingConfirmationByCnF"] = "BookingConfirmationByCnF"] = "BookingConfirmationByCnF";
-})(ScreenName = exports.ScreenName || (exports.ScreenName = {}));
+})(exports.ScreenName || (exports.ScreenName = {}));
+var ScreenName = exports.ScreenName;
 /*[GJ]@20170307 : Added the enum for the Loading Status*/
-var LoadingStatus;
 (function (LoadingStatus) {
     LoadingStatus[LoadingStatus["LOADING_NEW"] = 4] = "LOADING_NEW";
     LoadingStatus[LoadingStatus["LOADING_NOT_CONFIRM"] = 5] = "LOADING_NOT_CONFIRM";
@@ -120,15 +119,15 @@ var LoadingStatus;
     LoadingStatus[LoadingStatus["LOADING_COMPLETED"] = 16] = "LOADING_COMPLETED";
     LoadingStatus[LoadingStatus["DELIVERED"] = 17] = "DELIVERED";
     LoadingStatus[LoadingStatus["LOADING_CANCEL"] = 18] = "LOADING_CANCEL";
-})(LoadingStatus = exports.LoadingStatus || (exports.LoadingStatus = {}));
+})(exports.LoadingStatus || (exports.LoadingStatus = {}));
+var LoadingStatus = exports.LoadingStatus;
 /*[Vijaymala]@2017/03/11 : Added the enum for the Market Trend Status*/
-var MarketTrendStatus;
 (function (MarketTrendStatus) {
     MarketTrendStatus[MarketTrendStatus["MarketTrenByCF"] = 4] = "MarketTrenByCF";
     MarketTrendStatus[MarketTrendStatus["MarketTrenByMarketingPerson"] = 5] = "MarketTrenByMarketingPerson";
-})(MarketTrendStatus = exports.MarketTrendStatus || (exports.MarketTrendStatus = {}));
+})(exports.MarketTrendStatus || (exports.MarketTrendStatus = {}));
+var MarketTrendStatus = exports.MarketTrendStatus;
 /*[Vijaymala]@2017/03/17 : Added the enum for the Role*/
-var UserRole;
 (function (UserRole) {
     UserRole[UserRole["SYSTEM_ADMIN"] = 1] = "SYSTEM_ADMIN";
     UserRole[UserRole["DIRECTOR"] = 2] = "DIRECTOR";
@@ -139,20 +138,20 @@ var UserRole;
     UserRole[UserRole["FIELD_OFFICER"] = 7] = "FIELD_OFFICER";
     UserRole[UserRole["REGIONAL_MANAGER"] = 8] = "REGIONAL_MANAGER";
     UserRole[UserRole["VICE_PRESIDENT_MARKETING"] = 9] = "VICE_PRESIDENT_MARKETING";
-})(UserRole = exports.UserRole || (exports.UserRole = {}));
+})(exports.UserRole || (exports.UserRole = {}));
+var UserRole = exports.UserRole;
 /*[Vijaymala]@2017/03/22 : Added the enum for the MEssageTypeE*/
-var ResultMessageE;
 (function (ResultMessageE) {
     ResultMessageE[ResultMessageE["None"] = 0] = "None";
     ResultMessageE[ResultMessageE["Information"] = 1] = "Information";
     ResultMessageE[ResultMessageE["Error"] = 2] = "Error";
-})(ResultMessageE = exports.ResultMessageE || (exports.ResultMessageE = {}));
-var ProductCatE;
+})(exports.ResultMessageE || (exports.ResultMessageE = {}));
+var ResultMessageE = exports.ResultMessageE;
 (function (ProductCatE) {
     ProductCatE[ProductCatE["TMT"] = 1] = "TMT";
     ProductCatE[ProductCatE["Plain"] = 2] = "Plain";
-})(ProductCatE = exports.ProductCatE || (exports.ProductCatE = {}));
-var ProductSpecsE;
+})(exports.ProductCatE || (exports.ProductCatE = {}));
+var ProductCatE = exports.ProductCatE;
 (function (ProductSpecsE) {
     ProductSpecsE[ProductSpecsE["STRAIGHT"] = "Straight"] = "STRAIGHT";
     ProductSpecsE[ProductSpecsE["BEND"] = "Bend"] = "BEND";
@@ -160,5 +159,6 @@ var ProductSpecsE;
     ProductSpecsE[ProductSpecsE["RKLONG"] = "RKLong"] = "RKLONG";
     ProductSpecsE[ProductSpecsE["TUKADA"] = "Tukada"] = "TUKADA";
     ProductSpecsE[ProductSpecsE["COIL"] = "Coil"] = "COIL";
-})(ProductSpecsE = exports.ProductSpecsE || (exports.ProductSpecsE = {}));
+})(exports.ProductSpecsE || (exports.ProductSpecsE = {}));
+var ProductSpecsE = exports.ProductSpecsE;
 //# sourceMappingURL=global.js.map

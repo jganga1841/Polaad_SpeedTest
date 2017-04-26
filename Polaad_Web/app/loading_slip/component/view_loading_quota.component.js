@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var loading_service_1 = require("../services/loading_service");
-var myGlobalVal = require("app/global");
-var sharedService_1 = require("app/common/services/sharedService");
-var login_services_1 = require("app/login/login.services");
-var common_services_1 = require("app/common/services/common.services");
-var stockTO_1 = require("app/stock_details/model/stockTO");
+var core_1 = require('@angular/core');
+var loading_service_1 = require('../services/loading_service');
+var myGlobalVal = require('app/global');
+var sharedService_1 = require('app/common/services/sharedService');
+var login_services_1 = require('app/login/login.services');
+var common_services_1 = require('app/common/services/common.services');
+var stockTO_1 = require('app/stock_details/model/stockTO');
 var ViewLoadingQuota = (function () {
     function ViewLoadingQuota(ss, loadingServices, loginService, commonServices) {
         this.ss = ss;
@@ -119,17 +119,14 @@ var ViewLoadingQuota = (function () {
             }
         }
     };
+    ViewLoadingQuota = __decorate([
+        core_1.Component({
+            selector: 'view-loadingSlip',
+            templateUrl: 'app/loading_slip/view_loading_quota.html',
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, loading_service_1.LoadingServices, login_services_1.AuthenticationService, common_services_1.CommonServices])
+    ], ViewLoadingQuota);
     return ViewLoadingQuota;
 }());
-ViewLoadingQuota = __decorate([
-    core_1.Component({
-        selector: 'view-loadingSlip',
-        templateUrl: 'app/loading_slip/view_loading_quota.html',
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        loading_service_1.LoadingServices,
-        login_services_1.AuthenticationService,
-        common_services_1.CommonServices])
-], ViewLoadingQuota);
 exports.ViewLoadingQuota = ViewLoadingQuota;
 //# sourceMappingURL=view_loading_quota.component.js.map

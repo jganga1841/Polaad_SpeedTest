@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var quota_declaration_service_1 = require("../services/quota_declaration_service");
-var firm_information_1 = require("app/quota_declaration/model/firm_information");
-var firm_information_2 = require("app/quota_declaration/model/firm_information");
-var confirm_service_1 = require("app/error/confirm.service");
-var errorMessage_1 = require("app/error/errorMessage");
-var common_services_1 = require("app/common/services/common.services");
-var sharedService_1 = require("app/common/services/sharedService");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var quota_declaration_service_1 = require('../services/quota_declaration_service');
+var firm_information_1 = require('app/quota_declaration/model/firm_information');
+var firm_information_2 = require('app/quota_declaration/model/firm_information');
+var confirm_service_1 = require('app/error/confirm.service');
+var errorMessage_1 = require('app/error/errorMessage');
+var common_services_1 = require('app/common/services/common.services');
+var sharedService_1 = require('app/common/services/sharedService');
+var router_1 = require('@angular/router');
 var QuotaDeclarationComponent = (function () {
     function QuotaDeclarationComponent(ss, quotaDeclarationService, _confirmService, commonServices, route, router) {
         this.ss = ss;
@@ -187,27 +187,22 @@ var QuotaDeclarationComponent = (function () {
     QuotaDeclarationComponent.prototype.backMarketTrend = function () {
         this.router.navigate(['\MarketTrend']);
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], QuotaDeclarationComponent.prototype, "errorMsg", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], QuotaDeclarationComponent.prototype, "listId", void 0);
+    QuotaDeclarationComponent = __decorate([
+        core_1.Component({
+            selector: 'my-quota',
+            templateUrl: 'app/quota_declaration/quota_declaration.html'
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, quota_declaration_service_1.QuotaDeclarationService, confirm_service_1.ConfirmService, common_services_1.CommonServices, router_1.ActivatedRoute, router_1.Router])
+    ], QuotaDeclarationComponent);
     return QuotaDeclarationComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], QuotaDeclarationComponent.prototype, "errorMsg", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], QuotaDeclarationComponent.prototype, "listId", void 0);
-QuotaDeclarationComponent = __decorate([
-    core_1.Component({
-        selector: 'my-quota',
-        templateUrl: 'app/quota_declaration/quota_declaration.html'
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        quota_declaration_service_1.QuotaDeclarationService,
-        confirm_service_1.ConfirmService,
-        common_services_1.CommonServices,
-        router_1.ActivatedRoute,
-        router_1.Router])
-], QuotaDeclarationComponent);
 exports.QuotaDeclarationComponent = QuotaDeclarationComponent;
 //# sourceMappingURL=quota_declaration.component.js.map

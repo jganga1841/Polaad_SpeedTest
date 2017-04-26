@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var confirm_service_1 = require("./confirm.service");
+var core_1 = require('@angular/core');
+var confirm_service_1 = require('./confirm.service');
 // http://koscielniak.me/post/2016/03/angular2-confirm-dialog-component/
 var KEY_ESC = 27;
 var ConfirmComponent = (function () {
@@ -90,15 +90,15 @@ var ConfirmComponent = (function () {
         this._cancelButton = document.getElementById('cancelButton');
         this._okButton = document.getElementById('okButton');
     };
+    ConfirmComponent = __decorate([
+        core_1.Component({
+            selector: 'app-confirm',
+            template: "\n  <div id=\"confirmationModal\" class=\"modal fade in\" role=\"dialog\">\n  <div class=\"modal-dialog modal-sm\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n        <h4 class=\"modal-title\">{{title}}</h4>\n      </div>\n       <div class=\"modal-body\">\n        <p>{{message}}</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" id=\"cancelButton\">{{cancelText}}</button>\n        <button type=\"button\" class=\"btn btn-default\" id=\"okButton\">{{okText}}</button>\n      </div>\n    </div>\n  </div>\n  \n</div>\n  "
+        }),
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [confirm_service_1.ConfirmService])
+    ], ConfirmComponent);
     return ConfirmComponent;
 }());
-ConfirmComponent = __decorate([
-    core_1.Component({
-        selector: 'app-confirm',
-        template: "\n  <div id=\"confirmationModal\" class=\"modal fade in\" role=\"dialog\">\n  <div class=\"modal-dialog modal-sm\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n      <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\n        <h4 class=\"modal-title\">{{title}}</h4>\n      </div>\n       <div class=\"modal-body\">\n        <p>{{message}}</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" id=\"cancelButton\">{{cancelText}}</button>\n        <button type=\"button\" class=\"btn btn-default\" id=\"okButton\">{{okText}}</button>\n      </div>\n    </div>\n  </div>\n  \n</div>\n  "
-    }),
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [confirm_service_1.ConfirmService])
-], ConfirmComponent);
 exports.ConfirmComponent = ConfirmComponent;
 //# sourceMappingURL=confirm.component.js.map

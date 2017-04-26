@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var login_services_1 = require("app/login/login.services");
-var myGlobalVal = require("app/global");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var login_services_1 = require('app/login/login.services');
+var myGlobalVal = require('app/global');
 var MenuComponent = (function () {
     function MenuComponent(current, router, loginService) {
         this.current = current;
@@ -62,33 +62,31 @@ var MenuComponent = (function () {
         // Load comments
         this.getlist();
     };
+    MenuComponent = __decorate([
+        core_1.Component({
+            selector: 'my-menu',
+            template: '<ul  >' +
+                '<li class="has-subnav" *ngFor="let myMenu of mySet" attr.id ="{{myMenu.MenuId}}">' +
+                '<a [routerLink]="[myMenu.Path]" >' +
+                '<i class="{{myMenu.MenuClass}}"></i>' +
+                '<span class="nav-text">{{myMenu.MenuName}}</span>' +
+                '<b class="arrow fa fa-angle-right" style="padding-top: 12px;"></b> ' +
+                '</a>' +
+                '<b class="arrow"></b>' +
+                '<ul>' +
+                '<li *ngFor="let mySubMenu of myMenu.SubMenuList" attr.id ="{{mySubMenu.MenuId}}">' +
+                ' <a [routerLink]="[mySubMenu.Path]">' +
+                '<i class="{{mySubMenu.MenuClass}}"></i>' +
+                '<span class="nav-text">{{mySubMenu.MenuName}}</span>' +
+                '</a>' +
+                '<b class="arrow"></b>' +
+                '</li>' +
+                '</ul>' +
+                '</li></ul>'
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, login_services_1.AuthenticationService])
+    ], MenuComponent);
     return MenuComponent;
 }());
-MenuComponent = __decorate([
-    core_1.Component({
-        selector: 'my-menu',
-        template: '<ul  >' +
-            '<li class="has-subnav" *ngFor="let myMenu of mySet" attr.id ="{{myMenu.MenuId}}">' +
-            '<a [routerLink]="[myMenu.Path]" >' +
-            '<i class="{{myMenu.MenuClass}}"></i>' +
-            '<span class="nav-text">{{myMenu.MenuName}}</span>' +
-            '<b class="arrow fa fa-angle-right" style="padding-top: 12px;"></b> ' +
-            '</a>' +
-            '<b class="arrow"></b>' +
-            '<ul>' +
-            '<li *ngFor="let mySubMenu of myMenu.SubMenuList" attr.id ="{{mySubMenu.MenuId}}">' +
-            ' <a [routerLink]="[mySubMenu.Path]">' +
-            '<i class="{{mySubMenu.MenuClass}}"></i>' +
-            '<span class="nav-text">{{mySubMenu.MenuName}}</span>' +
-            '</a>' +
-            '<b class="arrow"></b>' +
-            '</li>' +
-            '</ul>' +
-            '</li></ul>'
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router,
-        login_services_1.AuthenticationService])
-], MenuComponent);
 exports.MenuComponent = MenuComponent;
 //# sourceMappingURL=menu.component.js.map

@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var confirm_service_1 = require("app/error/confirm.service");
-var errorMessage_1 = require("app/error/errorMessage");
-var common_services_1 = require("app/common/services/common.services");
-var sharedService_1 = require("app/common/services/sharedService");
-var productSpecificationService_1 = require("../services/productSpecificationService");
-var login_services_1 = require("app/login/login.services");
-var productSpecificationInfo_1 = require("../model/productSpecificationInfo");
-var myGlobalVal = require("app/global");
+var core_1 = require('@angular/core');
+var confirm_service_1 = require('app/error/confirm.service');
+var errorMessage_1 = require('app/error/errorMessage');
+var common_services_1 = require('app/common/services/common.services');
+var sharedService_1 = require('app/common/services/sharedService');
+var productSpecificationService_1 = require('../services/productSpecificationService');
+var login_services_1 = require('app/login/login.services');
+var productSpecificationInfo_1 = require('../model/productSpecificationInfo');
+var myGlobalVal = require('app/global');
 var ProductSpecificationMaster = (function () {
     function ProductSpecificationMaster(ss, _confirmService, commonServices, productSpecService, loginService) {
         this.ss = ss;
@@ -136,23 +136,19 @@ var ProductSpecificationMaster = (function () {
     ProductSpecificationMaster.prototype.selectOnClick = function ($event) {
         $event.target.select();
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], ProductSpecificationMaster.prototype, "errorMsg", void 0);
+    ProductSpecificationMaster = __decorate([
+        core_1.Component({
+            selector: 'my-productSpecification',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/Masters/productSpecification.html'
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, confirm_service_1.ConfirmService, common_services_1.CommonServices, productSpecificationService_1.productSpecService, login_services_1.AuthenticationService])
+    ], ProductSpecificationMaster);
     return ProductSpecificationMaster;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], ProductSpecificationMaster.prototype, "errorMsg", void 0);
-ProductSpecificationMaster = __decorate([
-    core_1.Component({
-        selector: 'my-productSpecification',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/Masters/productSpecification.html'
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        confirm_service_1.ConfirmService,
-        common_services_1.CommonServices,
-        productSpecificationService_1.productSpecService,
-        login_services_1.AuthenticationService])
-], ProductSpecificationMaster);
 exports.ProductSpecificationMaster = ProductSpecificationMaster;
 //# sourceMappingURL=productSpecification.component.js.map

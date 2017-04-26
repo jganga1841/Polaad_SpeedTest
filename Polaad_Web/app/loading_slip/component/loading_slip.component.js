@@ -8,29 +8,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var forms_1 = require("@angular/forms");
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
-var common_Information_1 = require("app/common/model/common_Information");
-var booking_service_1 = require("app/booking/services/booking_service");
-var loading_information_1 = require("../model/loading_information");
-var loading_information_2 = require("../model/loading_information");
-var booking_information_1 = require("app/booking/model/booking_information");
-var loading_information_3 = require("../model/loading_information");
-var loading_information_4 = require("../model/loading_information");
-var loading_information_5 = require("../model/loading_information");
-var loading_service_1 = require("../services/loading_service");
-var errorMessage_1 = require("app/error/errorMessage");
-var confirm_service_1 = require("app/error/confirm.service");
-var booking_information_2 = require("app/booking/model/booking_information");
+var forms_1 = require('@angular/forms');
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
+var common_Information_1 = require('app/common/model/common_Information');
+var booking_service_1 = require('app/booking/services/booking_service');
+var loading_information_1 = require('../model/loading_information');
+var loading_information_2 = require('../model/loading_information');
+var booking_information_1 = require('app/booking/model/booking_information');
+var loading_information_3 = require('../model/loading_information');
+var loading_information_4 = require('../model/loading_information');
+var loading_information_5 = require('../model/loading_information');
+var loading_service_1 = require('../services/loading_service');
+var errorMessage_1 = require('app/error/errorMessage');
+var confirm_service_1 = require('app/error/confirm.service');
+var booking_information_2 = require('app/booking/model/booking_information');
 // import { CustomValidators } from 'ng2-validation';
-var sharedService_1 = require("app/common/services/sharedService");
+var sharedService_1 = require('app/common/services/sharedService');
 var platform_browser_1 = require("@angular/platform-browser");
-var forms_2 = require("@angular/forms");
-var login_services_1 = require("app/login/login.services");
-var common_Information_2 = require("app/common/model/common_Information");
-var myGlobalVal = require("app/global");
-var encryptDecrypt = require("app/common/services/myservice");
+var forms_2 = require('@angular/forms');
+var login_services_1 = require('app/login/login.services');
+var common_Information_2 = require('app/common/model/common_Information');
+var myGlobalVal = require('app/global');
+var encryptDecrypt = require('app/common/services/myservice');
 var LoadingSlipComponent = (function () {
     function LoadingSlipComponent(ss, commonServices, bookingServices, loadingServices, _confirmService, builder, _sanitizer, authLoginServices) {
         var _this = this;
@@ -1151,26 +1151,19 @@ var LoadingSlipComponent = (function () {
             }
         });
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], LoadingSlipComponent.prototype, "errorMsg", void 0);
+    LoadingSlipComponent = __decorate([
+        core_1.Component({
+            selector: 'loading-slip',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/loading_slip/loading_slip.html'
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, common_services_1.CommonServices, booking_service_1.bookingServices, loading_service_1.LoadingServices, confirm_service_1.ConfirmService, forms_2.FormBuilder, platform_browser_1.DomSanitizer, login_services_1.AuthenticationService])
+    ], LoadingSlipComponent);
     return LoadingSlipComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], LoadingSlipComponent.prototype, "errorMsg", void 0);
-LoadingSlipComponent = __decorate([
-    core_1.Component({
-        selector: 'loading-slip',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/loading_slip/loading_slip.html'
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        common_services_1.CommonServices,
-        booking_service_1.bookingServices,
-        loading_service_1.LoadingServices,
-        confirm_service_1.ConfirmService,
-        forms_2.FormBuilder,
-        platform_browser_1.DomSanitizer,
-        login_services_1.AuthenticationService])
-], LoadingSlipComponent);
 exports.LoadingSlipComponent = LoadingSlipComponent;
 //# sourceMappingURL=loading_slip.component.js.map

@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var loading_service_1 = require("../services/loading_service");
+var core_1 = require('@angular/core');
+var loading_service_1 = require('../services/loading_service');
 // import 'rxjs/add/operator/filter'; 
-var router_1 = require("@angular/router");
-var confirm_service_1 = require("app/error/confirm.service");
-var myGlobalVal = require("app/global");
-var sharedService_1 = require("app/common/services/sharedService");
-var login_services_1 = require("app/login/login.services");
-var common_services_1 = require("app/common/services/common.services");
+var router_1 = require('@angular/router');
+var confirm_service_1 = require('app/error/confirm.service');
+var myGlobalVal = require('app/global');
+var sharedService_1 = require('app/common/services/sharedService');
+var login_services_1 = require('app/login/login.services');
+var common_services_1 = require('app/common/services/common.services');
 var ViewLoadingComponent = (function () {
     function ViewLoadingComponent(ss, router, loadingServices, route, loginService, commonServices) {
         this.ss = ss;
@@ -177,21 +177,16 @@ var ViewLoadingComponent = (function () {
         }
         this.ignoredFirstEvent = true;
     };
+    ViewLoadingComponent = __decorate([
+        core_1.Component({
+            selector: 'view-loadingSlip',
+            //template:'<measurement_spinner></measurement_spinner>'
+            templateUrl: 'app/loading_slip/view_loading_slip.html',
+            providers: [confirm_service_1.ConfirmService]
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, router_1.Router, loading_service_1.LoadingServices, router_1.ActivatedRoute, login_services_1.AuthenticationService, common_services_1.CommonServices])
+    ], ViewLoadingComponent);
     return ViewLoadingComponent;
 }());
-ViewLoadingComponent = __decorate([
-    core_1.Component({
-        selector: 'view-loadingSlip',
-        //template:'<measurement_spinner></measurement_spinner>'
-        templateUrl: 'app/loading_slip/view_loading_slip.html',
-        providers: [confirm_service_1.ConfirmService]
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        router_1.Router,
-        loading_service_1.LoadingServices,
-        router_1.ActivatedRoute,
-        login_services_1.AuthenticationService,
-        common_services_1.CommonServices])
-], ViewLoadingComponent);
 exports.ViewLoadingComponent = ViewLoadingComponent;
 //# sourceMappingURL=view_loading_slips.component.js.map

@@ -1,0 +1,64 @@
+<div class="panel panel-default top10">
+    <div class="panel-heading">
+        Size wise parity settings
+        <p class="pull-right alert alert-warning" style="padding:0px"> <strong> Last Updated on : </strong>{{lastUpdatedParityDate}}</p>
+    </div>
+    <div class="panel-body ">
+        <div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <label>Comment</label>
+                        </div>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" id="txtParityComment" rows="3" [(ngModel)]="paritySummaryTOObj.Remark">{{paritySummaryTOObj.Remark}}</textarea>
+
+                        </div>
+                    </div>
+                    <div class="row top10">
+                        <div class="col-sm-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead class="bg-info">
+                                        <tr>
+                                            <th rowspan="2" class="text-center">Size</th>
+                                            <th colspan="2" class="text-center">TMT</th>
+                                            <th colspan="2" class="text-center">Plain</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Parity</th>
+                                            <th class="text-center">Non-Confirmed</th>
+                                            <th class="text-center">Parity</th>
+                                            <th class="text-center">Non-Confirmed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor=" let key of keys ">
+                                            <td style="padding: 3px" *ngFor="let parityValue of allParityList[key];">
+                                                <p class="nopadding" *ngIf="parityValue.value == key"> {{parityValue.value}} </p>
+                                                <p class="nopadding" *ngIf="parityValue.value != key">
+                                                    <input name="key" type="number" class="form-control" placeholder="{{parityValue.value}}" [(ngModel)]="parityValue.value"
+                                                        (keyup)="updateValues(key, parityValue)">
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row top10">
+                <div class="form-group ">
+                    <div class=" form-group  col-sm-3 ">
+                        <button type="button " class="btn btn-primary left" (click)="setParityDetails()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-error-message></app-error-message>
+    <app-confirm></app-confirm>
+</div>

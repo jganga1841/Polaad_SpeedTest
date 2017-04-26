@@ -8,18 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var booking_service_1 = require("../services/booking_service");
-var booking_information_1 = require("../model/booking_information");
-var common_services_1 = require("app/common/services/common.services");
-var router_1 = require("@angular/router");
-var confirm_service_1 = require("app/error/confirm.service");
-var errorMessage_1 = require("app/error/errorMessage");
-var myGlobalVal = require("app/global");
-var contextMenu_service_1 = require("angular2-contextmenu/src/contextMenu.service");
-var common_1 = require("@angular/common");
-var login_services_1 = require("app/login/login.services");
-var sharedService_1 = require("app/common/services/sharedService");
+var core_1 = require('@angular/core');
+var booking_service_1 = require('../services/booking_service');
+var booking_information_1 = require('../model/booking_information');
+var common_services_1 = require('app/common/services/common.services');
+var router_1 = require('@angular/router');
+var confirm_service_1 = require('app/error/confirm.service');
+var errorMessage_1 = require('app/error/errorMessage');
+var myGlobalVal = require('app/global');
+var contextMenu_service_1 = require('angular2-contextmenu/src/contextMenu.service');
+var common_1 = require('@angular/common');
+var login_services_1 = require('app/login/login.services');
+var sharedService_1 = require('app/common/services/sharedService');
 var ViewBookinComponent = (function () {
     function ViewBookinComponent(router, commonServices, bookingServices, _confirmService, contextMenuService, loginService, ss, route) {
         var _this = this;
@@ -475,27 +475,20 @@ var ViewBookinComponent = (function () {
             }
         }
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], ViewBookinComponent.prototype, "errorMsg", void 0);
+    ViewBookinComponent = __decorate([
+        core_1.Component({
+            selector: 'view-booking',
+            templateUrl: 'app/booking/viewBooking.html',
+            providers: [confirm_service_1.ConfirmService, contextMenu_service_1.ContextMenuService]
+        }), 
+        __metadata('design:paramtypes', [router_1.Router, common_services_1.CommonServices, booking_service_1.bookingServices, confirm_service_1.ConfirmService, contextMenu_service_1.ContextMenuService, login_services_1.AuthenticationService, sharedService_1.sharedService, router_1.ActivatedRoute])
+    ], ViewBookinComponent);
     return ViewBookinComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], ViewBookinComponent.prototype, "errorMsg", void 0);
-ViewBookinComponent = __decorate([
-    core_1.Component({
-        selector: 'view-booking',
-        templateUrl: 'app/booking/viewBooking.html',
-        providers: [confirm_service_1.ConfirmService, contextMenu_service_1.ContextMenuService]
-    }),
-    __metadata("design:paramtypes", [router_1.Router,
-        common_services_1.CommonServices,
-        booking_service_1.bookingServices,
-        confirm_service_1.ConfirmService,
-        contextMenu_service_1.ContextMenuService,
-        login_services_1.AuthenticationService,
-        sharedService_1.sharedService,
-        router_1.ActivatedRoute])
-], ViewBookinComponent);
 exports.ViewBookinComponent = ViewBookinComponent;
 var ViewParticularBooking = (function () {
     function ViewParticularBooking(route, router, _location) {
@@ -506,19 +499,18 @@ var ViewParticularBooking = (function () {
     ViewParticularBooking.prototype.ngOnInit = function () {
         this.bookingTO = JSON.parse(localStorage.getItem('bookingTO'));
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], ViewParticularBooking.prototype, "errorMsg", void 0);
+    ViewParticularBooking = __decorate([
+        core_1.Component({
+            selector: 'view-ParticularBooking',
+            templateUrl: 'app/booking/viewParticularBooking.html',
+        }), 
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, common_1.Location])
+    ], ViewParticularBooking);
     return ViewParticularBooking;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], ViewParticularBooking.prototype, "errorMsg", void 0);
-ViewParticularBooking = __decorate([
-    core_1.Component({
-        selector: 'view-ParticularBooking',
-        templateUrl: 'app/booking/viewParticularBooking.html',
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router, common_1.Location])
-], ViewParticularBooking);
 exports.ViewParticularBooking = ViewParticularBooking;
 //# sourceMappingURL=viewBooking.component.js.map

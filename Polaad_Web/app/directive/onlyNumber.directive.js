@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var OnlyNumber = (function () {
     function OnlyNumber(el) {
         this.el = el;
@@ -34,24 +34,24 @@ var OnlyNumber = (function () {
             }
         }
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], OnlyNumber.prototype, "OnlyNumber", void 0);
+    __decorate([
+        core_1.HostListener('keydown', ['$event']), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Event]), 
+        __metadata('design:returntype', void 0)
+    ], OnlyNumber.prototype, "onKeyDown", null);
+    OnlyNumber = __decorate([
+        core_1.Directive({
+            selector: '[OnlyNumber]'
+        }), 
+        __metadata('design:paramtypes', [core_1.ElementRef])
+    ], OnlyNumber);
     return OnlyNumber;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Boolean)
-], OnlyNumber.prototype, "OnlyNumber", void 0);
-__decorate([
-    core_1.HostListener('keydown', ['$event']),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Event]),
-    __metadata("design:returntype", void 0)
-], OnlyNumber.prototype, "onKeyDown", null);
-OnlyNumber = __decorate([
-    core_1.Directive({
-        selector: '[OnlyNumber]'
-    }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
-], OnlyNumber);
 exports.OnlyNumber = OnlyNumber;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.

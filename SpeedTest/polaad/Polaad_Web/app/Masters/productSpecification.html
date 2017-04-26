@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h5 class="page-title">
+           Product Specification Master
+        </h5>
+    </div>
+</div>
+<div class="panel panel-default ">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            Product Specification Master
+        </h4>
+    </div>
+
+    <div class="panel-body">
+
+        <div class="row">
+                <div class="col-sm-4">
+                    <select class="form-control" required  name="materialId" [(ngModel)]="materialId" (change)="onProductCatSelect()" required >
+                                    <option value="0">Select Product</option>
+                                    <option *ngFor="let materialTO of materialList " [value]="materialTO.Value ">{{materialTO.Text}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <select class="form-control" required name="productCatId " [(ngModel)]="productCatId" (change)="onProductCatSelect()" required>
+                            <option value="0">Select Product Category</option>
+                            <option *ngFor="let productCatTo of productCategoryList " [value]="productCatTo.Value " >{{productCatTo.Text}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-2" *ngIf="isShow">
+                        <input name="SecWt" type="number" class="form-control" placeholder="Enter Section Wt" [(ngModel)]="prodSpecTo.SecWt" (click)="selectOnClick($event)">Kg/Mtrs
+                </div>
+        </div>
+  <div class="row" *ngIf="isOpen">
+   <div class="col-lg-12 top10">
+    <div class="table-responsive ">
+        <table class="table table-bordered table-hover">
+            <thead class="bg-info">
+                <tr >
+                    <th style="padding: 3px">Size/Specs</th>
+                    <!--<th>Section Wt.</th>-->
+                    <th>Avg Section Wt.(Kg/Mtrs)</th>
+                    <th>Std Length(Mtrs)</th>
+                    <th>No Of Pcs(Nos)</th>
+                    <th>Avg Bun Wt.(Kgs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let prodSpecTo of productSpecInfoList" >
+                        <td style="padding: 3px" > {{prodSpecTo.ProdSpecDesc}}
+                        </td>
+                        <!--<td style="padding: 3px">
+                            <input name="SecWt" type="number" class="form-control" placeholder="{{prodSpecTo.SecWt}}" [(ngModel)]="prodSpecTo.SecWt" (click)="selectOnClick($event)">
+                        </td>-->
+                        <td style="padding: 3px">
+                            <input name="AvgSecWt"  type="number" class="form-control" placeholder="{{prodSpecTo.AvgSecWt}}" [(ngModel)]="prodSpecTo.AvgSecWt" (change)="calculateAvgBundleWt(prodSpecTo)"  (click)="selectOnClick($event)" >
+                        </td>
+                        <td style="padding: 3px">
+                            <input name="StdLength"  type="number" class="form-control" placeholder="{{prodSpecTo.StdLength}}" [(ngModel)]="prodSpecTo.StdLength" (change)="calculateAvgBundleWt(prodSpecTo)"  (click)="selectOnClick($event)" >
+                        </td>
+                        <td style="padding: 3px">
+                            <input name="NoOfPcs" type="number" class="form-control" placeholder="{{prodSpecTo.NoOfPcs}}" [(ngModel)]="prodSpecTo.NoOfPcs" (change)="calculateAvgBundleWt(prodSpecTo)"  (click)="selectOnClick($event)" > 
+                        </td>
+                        <td style="padding: 3px">{{prodSpecTo.AvgBundleWt | number : '1.0-2'}}
+                        </td>
+                    </tr>
+            </tbody>
+    </table>
+    </div>
+    
+</div>
+ <div class="row" *ngIf="isOpen">
+    <div class="col-sm-12">
+        <button type="button" class="btn btn-primary" (click)="showConfirmDialog(prodSpecTo.SecWt)" >Submit</button>
+    </div>
+    </div>
+</div>
+<app-error-message></app-error-message>
+<app-confirm></app-confirm>
+
+</div>
+</div>

@@ -8,17 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
-var common_Information_1 = require("app/common/model/common_Information");
-var confirm_service_1 = require("app/error/confirm.service");
-var market_trend_service_1 = require("../service/market_trend_service");
-var errorMessage_1 = require("app/error/errorMessage");
-var myGlobalVal = require("app/global");
-var market_trend_information_1 = require("../model/market_trend_information");
-var login_services_1 = require("app/login/login.services");
-var sharedService_1 = require("app/common/services/sharedService");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
+var common_Information_1 = require('app/common/model/common_Information');
+var confirm_service_1 = require('app/error/confirm.service');
+var market_trend_service_1 = require('../service/market_trend_service');
+var errorMessage_1 = require('app/error/errorMessage');
+var myGlobalVal = require('app/global');
+var market_trend_information_1 = require('../model/market_trend_information');
+var login_services_1 = require('app/login/login.services');
+var sharedService_1 = require('app/common/services/sharedService');
+var router_1 = require('@angular/router');
 var MarketTrendComponent = (function () {
     function MarketTrendComponent(ss, commonServices, marketTrendServices, _confirmService, loginService, route, router) {
         this.ss = ss;
@@ -177,25 +177,19 @@ var MarketTrendComponent = (function () {
     MarketTrendComponent.prototype.backquota = function () {
         this.router.navigate(['\QuotaDeclaration']);
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], MarketTrendComponent.prototype, "errorMsg", void 0);
+    MarketTrendComponent = __decorate([
+        core_1.Component({
+            selector: 'my-market-trend',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/market_trend/market_trend.html'
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, common_services_1.CommonServices, market_trend_service_1.MarketTrendServices, confirm_service_1.ConfirmService, login_services_1.AuthenticationService, router_1.ActivatedRoute, router_1.Router])
+    ], MarketTrendComponent);
     return MarketTrendComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], MarketTrendComponent.prototype, "errorMsg", void 0);
-MarketTrendComponent = __decorate([
-    core_1.Component({
-        selector: 'my-market-trend',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/market_trend/market_trend.html'
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        common_services_1.CommonServices,
-        market_trend_service_1.MarketTrendServices,
-        confirm_service_1.ConfirmService,
-        login_services_1.AuthenticationService,
-        router_1.ActivatedRoute,
-        router_1.Router])
-], MarketTrendComponent);
 exports.MarketTrendComponent = MarketTrendComponent;
 //# sourceMappingURL=market_trend.component.js.map

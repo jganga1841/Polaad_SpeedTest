@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var loading_service_1 = require("../services/loading_service");
-var confirm_service_1 = require("app/error/confirm.service");
-var errorMessage_1 = require("app/error/errorMessage");
-var myGlobalVal = require("app/global");
-var sharedService_1 = require("app/common/services/sharedService");
-var login_services_1 = require("app/login/login.services");
+var core_1 = require('@angular/core');
+var loading_service_1 = require('../services/loading_service');
+var confirm_service_1 = require('app/error/confirm.service');
+var errorMessage_1 = require('app/error/errorMessage');
+var myGlobalVal = require('app/global');
+var sharedService_1 = require('app/common/services/sharedService');
+var login_services_1 = require('app/login/login.services');
 var ViewInOutLoadingComponent = (function () {
     function ViewInOutLoadingComponent(ss, loadingServices, _confirmService, loginService) {
         this.ss = ss;
@@ -226,23 +226,20 @@ var ViewInOutLoadingComponent = (function () {
             return true;
         }
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], ViewInOutLoadingComponent.prototype, "errorMsg", void 0);
+    ViewInOutLoadingComponent = __decorate([
+        core_1.Component({
+            selector: 'view-loadingSlip',
+            //template:'<measurement_spinner></measurement_spinner>'
+            templateUrl: 'app/loading_slip/view_inOut_loading_slip.html',
+            providers: [confirm_service_1.ConfirmService]
+        }), 
+        __metadata('design:paramtypes', [sharedService_1.sharedService, loading_service_1.LoadingServices, confirm_service_1.ConfirmService, login_services_1.AuthenticationService])
+    ], ViewInOutLoadingComponent);
     return ViewInOutLoadingComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], ViewInOutLoadingComponent.prototype, "errorMsg", void 0);
-ViewInOutLoadingComponent = __decorate([
-    core_1.Component({
-        selector: 'view-loadingSlip',
-        //template:'<measurement_spinner></measurement_spinner>'
-        templateUrl: 'app/loading_slip/view_inOut_loading_slip.html',
-        providers: [confirm_service_1.ConfirmService]
-    }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService,
-        loading_service_1.LoadingServices,
-        confirm_service_1.ConfirmService,
-        login_services_1.AuthenticationService])
-], ViewInOutLoadingComponent);
 exports.ViewInOutLoadingComponent = ViewInOutLoadingComponent;
 //# sourceMappingURL=view_inOut_loading_slip.component.js.map

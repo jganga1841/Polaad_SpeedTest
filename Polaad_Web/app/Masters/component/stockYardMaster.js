@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var stockYardInfo_1 = require("app/Masters/model/stockYardInfo");
-var stockYardService_1 = require("app/Masters/services/stockYardService");
-var errorMessage_1 = require("app/error/errorMessage");
-var confirm_service_1 = require("app/error/confirm.service");
+var core_1 = require('@angular/core');
+var stockYardInfo_1 = require('app/Masters/model/stockYardInfo');
+var stockYardService_1 = require('app/Masters/services/stockYardService');
+var errorMessage_1 = require('app/error/errorMessage');
+var confirm_service_1 = require('app/error/confirm.service');
 var StockYardMaster = (function () {
     function StockYardMaster(_confirmService, stockYardServiceObj) {
         this._confirmService = _confirmService;
@@ -38,20 +38,19 @@ var StockYardMaster = (function () {
                 _this.errorMsg.showErrorMessage("Record not Saved", "Error");
         }, function (err) { });
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], StockYardMaster.prototype, "errorMsg", void 0);
+    StockYardMaster = __decorate([
+        core_1.Component({
+            selector: 'my-stockYard',
+            // template:'<h1>Hello</h1>'
+            templateUrl: 'app/Masters/stockYard.component.html'
+        }), 
+        __metadata('design:paramtypes', [confirm_service_1.ConfirmService, stockYardService_1.stockYardService])
+    ], StockYardMaster);
     return StockYardMaster;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], StockYardMaster.prototype, "errorMsg", void 0);
-StockYardMaster = __decorate([
-    core_1.Component({
-        selector: 'my-stockYard',
-        // template:'<h1>Hello</h1>'
-        templateUrl: 'app/Masters/stockYard.component.html'
-    }),
-    __metadata("design:paramtypes", [confirm_service_1.ConfirmService,
-        stockYardService_1.stockYardService])
-], StockYardMaster);
 exports.StockYardMaster = StockYardMaster;
 //# sourceMappingURL=stockYardMaster.js.map

@@ -1,0 +1,592 @@
+<div class="row" *ngIf="!isClosed">
+    <div class="col-lg-12">
+        <h5 class="page-title">
+            Booking
+        </h5>
+    </div>
+</div>
+<div class="row " *ngIf="lblMessage != undefined && isClosed">
+    <div class="col-md-12 top10">
+        <div class="alert alert-danger" role="alert">
+            <div class="error-template">
+                <h1>
+                    Oops! <i class="fa fa-frown-o" aria-hidden="true" style="height: 42px"></i> </h1>
+                <h2>
+                    {{lblMessage}}</h2>
+                <div class="error-details">
+                    Will notify you once it opens!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!isClosed">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" *ngIf="!isEditBooking">
+                New Booking
+            </div>
+            <div class="panel-heading" *ngIf="isEditBooking">
+                Update Booking : # {{bookingTO.IdBooking}}
+            </div>
+            <div class="panel-body">
+                <div class="row" *ngIf="isShowCnFLst">
+                    <div class="col-lg-12">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Select C&F:</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control" [(ngModel)]="bookingTO.CnFOrgId" (change)="onddlCnFChage($event.target.value)">
+                                        <option  value=0>Select  C&F</option>
+                                        <option *ngFor="let cnfInfo of cnfList" [value]="cnfInfo.Value" >{{cnfInfo.Text}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--First div for Rate-->
+                <div class="row top10" *ngIf="!isEditBooking">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <table style="width: 100%; align-self: center" aria-describedby="dataTables-example_info" role="grid" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead class="bg-info">
+                                    <tr *ngFor="let compQuotaRateBand of compQuotaRateBandList">
+                                        <td aria-label="Rendering engine: activate to sort column ascending" style="width: 150px;" colspan="1" rowspan="1" aria-controls="dataTables-example" tabindex="0" class="sorting" *ngIf="isPreviousExist">
+                                            <input name="IsSelect" type="radio" (change)=" onSelectionChange(compQuotaRateBand);onchange($event);getStyle();qtycolorstyle();onratechange($event);getRateStyle();colorstyle()" [value]="true">
+                                        </td>
+                                        <td aria-label="Rendering engine: activate to sort column ascending" style="width: 150px;" colspan="1" rowspan="1" aria-controls="dataTables-example" tabindex="0" class="sorting">
+                                            {{ compQuotaRateBand.ValidUpto > 0 ? "Previous Quota:" : "Current Quota:" }}{{compQuotaRateBand?.BalanceQty}}</td>
+                                        <td aria-label="Rendering engine: activate to sort column ascending" style="width: 150px;" colspan="1" rowspan="1" aria-controls="dataTables-example" tabindex="0" class="sorting">
+                                            {{ compQuotaRateBand.ValidUpto > 0 ? "Previous Rate Band :" : "Current Rate Band :" }} {{compQuotaRateBand?.RateBand}}</td>
+                                        <td aria-label="Rendering engine: activate to sort column ascending" style="width: 150px;" colspan="1" rowspan="1" aria-controls="dataTables-example" tabindex="0" class="sorting">
+                                            {{ compQuotaRateBand.ValidUpto > 0 ? "Previous Rate :" : "Current Rate :" }} {{compQuotaRateBand?.DeclaredRate | currency : 'INR': true:'1.0-0' }}</td>
+                                        <td aria-label="Rendering engine: activate to sort column ascending" style="width: 200px;" colspan="1" rowspan="1" aria-controls="dataTables-example" tabindex="0" class="sorting">
+                                            {{ compQuotaRateBand.ValidUpto> 0 ? validUpTo : "-"}}
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Dealer Data-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-sm-9">
+                            <div class="row col-lg-12">
+                                <div class="form-group ">
+                                    <div *ngIf="!isEditBooking">
+                                        <label class="control-label col-sm-3">Dealer:</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control " (change)="onSelect($event.target.value)" [(ngModel)]="bookingTO.DealerOrgId" name="ddlDealer" data-show-subtext="true" data-live-search="true">
+                                                    <option [value]="0" selected>Select Dealer</option>
+                                                    <option *ngFor="let DealerInfo of dealerList" [value]="DealerInfo.Value">{{DealerInfo.Text}}</option>
+                                                </select>
+                                            <!--<input ng2-auto-complete [formControl]="continent" [(ngModel)]="bookingTO.DealerOrgId" [source]="dealerList" [list-formatter]="autocompleListFormatter" value-property-name="Value" display-property-name="Text" placeholder="Dealer Name" class="form-control" (valueChanged)="onSelect($event)"
+                        							(ngModelChange)="onSelect($event)">-->
+                                        </div>
+                                    </div>
+                                    <div *ngIf="isEditBooking">
+                                        <label class="control-label-left col-sm-2">Dealer:</label>
+                                        <label class="control-label-left col-sm-5">{{bookingTO.DealerName}}</label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row top10 col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Address:</label>
+                                    <div class="control-label col-sm-7">
+                                        {{dealerAddrInfo?.PlotNo}} {{dealerAddrInfo?.StreetName}} {{dealerAddrInfo?.AreaName}} {{dealerAddrInfo?.VillageName}} {{dealerAddrInfo?.TalukaName}} {{dealerAddrInfo?.DistrictName}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-3">
+                            <img src="/app/images/DealerImg.png" class="carbonad-image carbonad-img" style="max-width:130px;" height="100" width="100" border="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Booking Historical Data-->
+            <div class="row top10" *ngIf="!isEditBooking && isDealerSelect">
+                <div class="col-lg-12">
+                    <squeezebox [multiple]="false">
+                        <sb-item>
+                            <div class="panel panel-default nopadding">
+                                <div class="panel-heading">
+                                    <!--*ngFor="let item of itemsList"-->
+                                    <sb-item-head> Booking History(Last 4 Records)</sb-item-head>
+                                </div>
+                                <div class="panel-body">
+                                    <sb-item-body>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Booking Quantity</th>
+                                                        <th>Pending Quantity</th>
+                                                        <th>Rate</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let dealerBookingInfo of dealerBookingHistLst">
+                                                        <td>{{dealerBookingInfo.CreatedOnStr }}</td>
+                                                        <td>{{dealerBookingInfo.BookingQty}}</td>
+                                                         <td>{{dealerBookingInfo.PendingQty}}</td>
+                                                        <td>{{dealerBookingInfo.BookingRate | currency:'INR':true:'1.0-0'}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </sb-item-body>
+                                </div>
+                            </div>
+                        </sb-item>
+                    </squeezebox>
+                </div>
+            </div>
+
+            <!--Enter section for Booking Order -->
+           
+            <form (ngSubmit)="showConfirmDialog();" #bookingForm="ngForm"  *ngIf="isQuotaSelect && isDisplay">
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <squeezebox [multiple]="false">
+                            <sb-item>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <sb-item-head>Booking Details(Mandatory)<label class="required ">*</label></sb-item-head>
+                                    </div>
+                                    <div class="panel-body">
+                                        <sb-item-body>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="control-label-left col-sm-3" for="OrderQty">Order Quantity:<label class="required ">*</label></label>
+                                                            <div class="col-sm-5">
+                                                                <!--"-->
+                                                                <input type="number" class="form-control" [(ngModel)]="globalBookingQty" name="OrderQty" required [style.background-color]="getStyle()" [style.color]="qtycolorstyle()" (keyup)="onchange($event)" placeholder="Enter Quantity In Metric Tons"
+                                                                    (click)="selectOnClick($event)" autocomplete="off" />
+                                                                   
+                                                            </div>
+                                                            <!--<label>(Metric Tons)</label>-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label-left col-sm-3" for="Rate">Rate:    <label class="required">*</label></label> 
+                                                            <div class="col-sm-5">
+                                                                <input type="number" class="form-control" [(ngModel)]="bookingTO.BookingRate" name="BookingRate" required placeholder="Enter Rate" [style.background-color]="getRateStyle()" [style.color]="colorstyle()" (keyup)="onratechange($event);" (change)="isRateBetween()"
+                                                                    (click)="selectOnClick($event)" autocomplete="off">
+                                                            </div>
+                                                            <!--<label>(Rs. Per Tons)</label>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="control-label-left col-sm-3" for="Delivery Period">Delivery Period:<label class="required">*</label></label>
+                                                            <div class="col-sm-5">
+                                                                <!--<input type="number" class="form-control" [(ngModel)]="bookingTO.DeliveryDays" name="DeliveryDays" required placeholder="Enter Delivery Days" #DeliveryDays=ngModel (click)="selectOnClick($event)" autocomplete="off">-->
+                                                                <select name="ddlDeliverydays" class="form-control" [(ngModel)]="bookingTO.DeliveryDays" required> 
+																		<option *ngFor="let deliveryPeriodTo of deliveryPeriodList;" [value]="deliveryPeriodTo.Value" >{{deliveryPeriodTo.Text}}
+																		</option>
+																	</select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label-left col-sm-3" for="CD Structure">CD Structure: <label class="required">*</label></label>
+                                                            <div class="col-sm-5">
+                                                                <select name="ddlCdStructure" class="form-control" [(ngModel)]="bookingTO.CdStructureId" required> 
+																		<option *ngFor="let cdStructureTo of cdStructureList"  [value]="cdStructureTo.Value">{{cdStructureTo.Text}}
+																		</option>
+																	</select>
+                                                                <!--<input type="text" class="form-control" id="txtCDStructure" [(ngModel)]="bookingTO.CdStructure" name="CdStructure">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label-left col-sm-3" for="CD Structure">Select: <label class="required">*</label></label>
+                                                            <label class="checkbox-inline">
+																<input type="radio" class="form-check-input  "  id="optionsRadios1"   [value]="true" [(ngModel)]="bookingTO.IsConfirmed" name="IsConfirmed" required [checked]="bookingTO.IsConfirmed===true">
+																   Confirmed? 
+															</label>
+                                                            <label class="checkbox-inline">
+																<input type="radio" class="form-check-input"  id="optionsRadios1"    [value]="false"  [(ngModel)]="bookingTO.IsConfirmed" name="IsConfirmed" required [checked]="bookingTO.IsConfirmed===false">
+																	Not Confirmed? 
+															</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <button class="btn btn-primary" type="submit " name="btnAddOrderDetails" style="margin-left: 10px" [disabled]="!bookingForm.valid">Add</button>
+                                                <button class="btn btn-primary" type="button " name="specialRequirement" style="margin-left: 10px" (click)="submitted=false">Special Requirement</button>
+                                            </div>
+                                        </sb-item-body>
+                                    </div>
+                                </div>
+                            </sb-item>
+                        </squeezebox>
+                    </div>
+                </div>
+                <!--Enter section for Booking Order Material-->
+                <form (ngSubmit)=" confirmAndAddOrder(orderDetailsTO, materialTO) && getBookedQtyStyle(orderDetailsTO)" #MaterialForm="ngForm">
+                    <div class="row " *ngIf="isQuotaSelect && isDisplay">
+                        <div class="col-lg-12">
+                            <squeezebox [multiple]="false">
+                                <sb-item>
+                                    <!--*ngFor="let item of itemsList"-->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <sb-item-head> Material Details (Optional)</sb-item-head>
+                                        </div>
+                                        <div class="panel-body">
+                                            <sb-item-body>
+                                                <div class="row">
+                                                    <!--<div class="col-lg-12 ">
+                                                        <div class="form-group col-sm-4">
+                                                            <select name="ddlMaterial" class="form-control" [(ngModel)]="materialTO" required>
+																		<option *ngFor="let MaterialTo of materialList" [ngValue]="MaterialTo" >{{MaterialTo.Text}}</option>
+																	</select>
+                                                        </div>
+                                                        <div class="form-group col-sm-4">
+                                                            <input name="BookedQty" type="number" class="form-control" placeholder="Quantity" required [(ngModel)]="orderDetailsTO.BookedQty" [style.background-color]="getBookedQtyStyle(orderDetailsTO)" (onkeypress)="ValidateQtyWithGlobal($event)" #BookedQty="ngModel"
+                                                                (click)="selectOnClick($event)" autocomplete="off">
+                                                        </div>
+                                                        <div class="form-group col-sm-2"> <label class="top10">(Metric Tons)</label></div>
+                                                        <div class="form-group col-sm-2">
+                                                            <button type="submit " class="btn btn-primary">Add</button>
+                                                            <!--<button type="submit"   (click)="confirmAndAddOrder(orderDetailsTO, materialTO) && getBookedQtyStyle(orderDetailsTO)" class="btn btn-primary top10">Add</button>-->
+                                                        <!--</div>
+                                                    </div>-->
+                                                    <div class="col-lg-12" >
+                                                        <div class="form-group">
+                                                            <div class=" form-group col-sm-3" style="padding-left : 0px">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#materialAddingModel" (click)="checkBookingQty()">Add Material</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 ">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                             Category
+                                                                        </th>
+                                                                        <th>
+                                                                             Specification
+                                                                        </th>
+                                                                        <th>
+                                                                            Size
+                                                                        </th>
+                                                                        <th>
+                                                                            Quantity(MT.)
+                                                                        </th>
+                                                                        <th> Action
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr *ngFor="let orderDet of OrderDetailsLst">
+                                                                        <td>{{orderDet.ProdCatDesc}}</td>
+                                                                        <td>{{orderDet.ProdSpecDesc}}</td>
+                                                                        <td>{{orderDet.MaterialSubType}}</td>
+                                                                        <td>
+                                                                            {{orderDet.BookedQty}}
+                                                                            <!--<p class="nopadding" *ngIf="orderDet.IdBookingExt === IdBookingExt ">
+                                                                                <input type="number" [(ngModel)]="orderDet.BookedQty" name="EditedBookedQty" (click)="selectOnClick($event)" />
+                                                                            </p>
+                                                                            <p class="nopadding" *ngIf="orderDet.IdBookingExt !== IdBookingExt ">
+                                                                                {{orderDet.BookedQty}}
+                                                                            </p>-->
+                                                                        </td>
+                                                                        <!--<td *ngIf="isEditBooking">
+                                                                            <button class="btn btn-link" role="link" type="submit" (click)="editMaterial($event,orderDet) && selectOnClick($event)">
+																			<p *ngIf="orderDet.IdBookingExt === IdBookingExt" >
+																				{{editText}}
+																			</p>
+																			<p class="nopadding" *ngIf="orderDet.IdBookingExt !== IdBookingExt">
+																				Edit
+																			</p>
+																		</button>
+                                                                        </td>-->
+                                                                        <td >
+                                                                            <button class="btn btn-link" role="link" type="submit" (click)="deleteMaterial($event,orderDet)">Delete</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </sb-item-body>
+                                        </div>
+                                    </div>
+                                </sb-item>
+                            </squeezebox>
+                        </div>
+                    </div>
+                </form>
+                <div class="row " *ngIf="isQuotaSelect && isDisplay">
+                    <div class="col-lg-12">
+                        <squeezebox [multiple]="false">
+                            <sb-item>
+                                <!--*ngFor="let item of itemsList"-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <sb-item-head> Delivery Address Details (Optional)</sb-item-head>
+                                    </div>
+                                    <div class="panel-body">
+                                        <sb-item-body>
+                                            <!--*ngIf="!isEditBooking"-->
+                                            <div class="table-responsive">
+                                                <div class="form-group form-inline">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group ">
+                                                                 <div class="col-sm-5">
+                                                                <label class="control-label-left" for="NoDelivery">No. Of Deliveries</label>
+                                                                 </div>
+                                                                <div class="col-sm-5">
+                                                                    <select name="noOfDelivery" required class="form-control col-sm-3" [(ngModel)]="bookingTO.NoOfDeliveries">
+																			 <option *ngFor="let noOfDeliveries of noOfDeliveriesList " [value]="noOfDeliveries.Text" [selected]="noOfDeliveries.Value === bookingTO.NoOfDeliveries">{{noOfDeliveries.Text}}</option>
+																		</select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="checkbox-inline">
+																		<input type="checkbox"  ng-true-value="1" ng-false-value="0" [(ngModel)]="bookingTO.IsJointDelivery" name="IsJointDelivery" [checked]="bookingTO.IsJointDelivery===true"> Joint Delivery
+																	</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="form-group top10">
+                                                                <input type="text" name="address" class="form-control resizeclass" placeholder="Delivery Address" [(ngModel)]="deliveryAddress.Address" (click)="selectOnClick($event)" autocomplete="off">
+                                                            </div>
+                                                            <div class="form-group top10">
+                                                                <input type="text" name="VillageName" class="form-control" placeholder="Village Name" [(ngModel)]="deliveryAddress.VillageName" (click)="selectOnClick($event)" autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="form-group top10">
+                                                                <input type="text" name="talukaName" class="form-control" placeholder="Taluka Name" [(ngModel)]="deliveryAddress.TalukaName" (click)="selectOnClick($event)" autocomplete="off">
+                                                            </div>
+                                                            <div class="form-group top10">
+                                                                <input type="text" name="districtName" class="form-control" placeholder="District Name" [(ngModel)]="deliveryAddress.DistrictName" (click)="selectOnClick($event)" autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group top10">
+                                                            <input type="button" value="Add" (click)="addNewDeliveryAddr(deliveryAddress)" class="btn btn-primary">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Delivery Address
+                                                            </th>
+                                                            <th>
+                                                                Village
+                                                            </th>
+                                                            <th>
+                                                                Taluka
+                                                            </th>
+                                                            <th>
+                                                                District
+                                                            </th>
+                                                            <th  > Action
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let deliveryAddr of deliveryAddressLst; let i = index" [class.active]="i == selectedRow">
+                                                            <td>
+                                                                  {{deliveryAddr.Address}}
+                                                                <!--<p class="nopadding" *ngIf=" i == selectedRow && isEdit">
+                                                                    <input type="text" [(ngModel)]="deliveryAddr.Address" value="deliveryAddr.Address" name="Address" (click)="selectOnClick($event)" autocomplete="off" />
+                                                                </p>-->
+                                                                <!--<p class="nopadding" *ngIf=" !isEdit">
+                                                                    {{deliveryAddr.Address}}
+                                                                </p>-->
+                                                            </td>
+                                                            <td>
+                                                                    {{deliveryAddr.VillageName}}
+                                                                <!--<p class="nopadding" *ngIf=" i == selectedRow && isEdit">
+                                                                    <input type="text" [(ngModel)]="deliveryAddr.VillageName"  value="deliveryAddr.VillageName" name="VillageName" (click)="selectOnClick($event)" autocomplete="off" />
+                                                                </p>
+                                                                <p class="nopadding" *ngIf=" !isEdit">
+                                                                    {{deliveryAddr.VillageName}}
+                                                                </p>-->
+                                                            </td>
+                                                            <td>
+                                                                    {{deliveryAddr.TalukaName}}
+                                                                <!--<p class="nopadding" *ngIf="i== selectedRow && isEdit">
+                                                                    <input type="text" [(ngModel)]="deliveryAddr.TalukaName" value="deliveryAddr.TalukaName" name="TalukaName" (click)="selectOnClick($event)" autocomplete="off" />
+                                                                </p>
+                                                                <p class="nopadding" *ngIf="!isEdit">
+                                                                    {{deliveryAddr.TalukaName}}
+                                                                </p>-->
+                                                            </td>
+                                                            <td>
+                                                                    {{deliveryAddr.DistrictName}}
+                                                                <!--<p class="nopadding" *ngIf=" i == selectedRow && isEdit">
+                                                                    <input type="text" [(ngModel)]="deliveryAddr.DistrictName"  value="deliveryAddr.DistrictName"name="DistrictName" (click)="selectOnClick($event)" autocomplete="off" />
+                                                                </p>
+                                                                <p class="nopadding" *ngIf=" i != selectedRow &&!isEdit">
+                                                                    {{deliveryAddr.DistrictName}}
+                                                                </p>-->
+                                                            </td>
+                                                            <!--<td>
+                                                                <button class="btn btn-link" role="link" type="submit" (click)="editDeliveryAddress(i)">
+																		<p class="nopadding" *ngIf=" i == selectedRow && isEdit">
+																			{{editDeliveryAddrText}}
+																		</p>
+																		<p class="nopadding" *ngIf=" !isEdit">
+																			 Edit
+																		</p>
+																	</button>
+                                                            </td>-->
+                                                            <td>
+                                                                <button class="btn btn-link" role="link" type="submit" (click)="deleteDeliveryAddress($event,deliveryAddr)">Delete</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </sb-item-body>
+                                    </div>
+                                </div>
+                            </sb-item>
+                        </squeezebox>
+                    </div>
+                </div>
+                <div class="col-lg-12 top10">
+                    <div style="align-items: center">
+                        <button type="button " class="btn btn-primary" (click)="submitted=false">Cancel</button>
+                        <button type="submit " class="btn btn-primary"  [disabled]="!bookingForm.valid">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <app-error-message></app-error-message>
+    <app-confirm></app-confirm>
+    <!--<modal-confirm></modal-confirm>-->
+    <!--<div class="col-lg-12">
+				<div class="col-lg-2">
+					<button type="button " class="btn btn-primary">Cancel</button>
+				</div>
+				<div class="col-lg-2">
+					<button type="button " class="btn btn-primary" (click)="bookingOrder()">Submit</button>
+				</div>
+			</div>-->
+    <!-- /.panel -->
+</div>
+ <!--Matrial Quota adding againest booked order-->
+                <div id="materialAddingModel" class="modal fade" data-backdrop="static" *ngIf="isShowModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" style="padding: 6px;">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clearList()">&times;</button>
+                                <h4 class="modal-title">Enter The Quantity (Metric Tons) </h4>
+                            </div>
+                            <div class="modal-body nopadding">
+                                <div class="row ">
+                                    <div class="col-lg-12">
+
+                                        <div class="">
+                                            <div class="col-sm-2">
+                                                <label class="checkbox-inline">
+                        <input type="radio" class="form-check-input  " name="optionsRadios" id="optionsRadios1"   [value]="false" [(ngModel)]="ProdCatVal" name="isPlain" [checked]="ProdCatVal===false" (click)="CollectProductSpecif(1)">
+						TMT</label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label class="checkbox-inline">
+						<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1"    [value]="true"  [(ngModel)]="ProdCatVal" name="IsTMT" [checked]="ProdCatVal===true" (click)="CollectProductSpecif(2)">
+						Plain</label>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive ">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr class="bg-info">
+                                                        <th style="padding: 3px">Size/Specs</th>
+                                                        <th *ngFor="let prodSpec of productSpec" style="padding: 3px">{{prodSpec}}</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor=" let materialTo of productMaterialSpecAndCatList ">
+                                                        <td style="padding: 3px">
+                                                            {{materialTo.MaterialCategory}}
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="StraightQty" type="number" class="form-control" placeholder="{{materialTo.StraightQty}}" [(ngModel)]="materialTo.StraightQty" (click)="selectOnClick($event)" (keyup)="calculateTotal();">
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="BendQty" type="number" class="form-control" placeholder="{{materialTo.BendQty}}" [(ngModel)]="materialTo.BendQty" (click)="selectOnClick($event)"  (keyup)="calculateTotal()">
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="RKShortQty" type="number" class="form-control" placeholder="{{materialTo.RKShortQty}}" [(ngModel)]="materialTo.RKShortQty" (click)="selectOnClick($event)"  (keyup)="calculateTotal()">
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="RKLongQty" type="number" class="form-control" placeholder="{{materialTo.RKLongQty}}" [(ngModel)]="materialTo.RKLongQty" (click)="selectOnClick($event)"  (keyup)="calculateTotal()">
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="TukadaQty" type="number" class="form-control" placeholder="{{materialTo.TukadaQty}}" [(ngModel)]="materialTo.TukadaQty" (click)="selectOnClick($event)"  (keyup)="calculateTotal();">
+                                                        </td>
+                                                        <td style="padding: 3px">
+                                                            <input name="CoilQty" type="number" class="form-control" placeholder="{{materialTo.CoilQty}}" [(ngModel)]="materialTo.CoilQty" (click)="selectOnClick($event)"  (keyup)="calculateTotal();">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding: 3px">Total</td>
+                                                        <td style="padding: 3px">{{totalStraightQty}}</td>
+                                                        <td style="padding: 3px">{{totalBendQty}}</td>
+                                                        <td style="padding: 3px">{{totalRKShortQty}}</td>
+                                                        <td style="padding: 3px">{{totalRKLongQty}}</td>
+                                                        <td style="padding: 3px">{{totalTukadaQty}}</td>
+                                                        <td style="padding: 3px">{{totalCoilQty}}</td>
+                                                       <td [style.background-color]="isBookedQtyGreater == true ? 'IndianRed' : 'white'" >{{total}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="isBookedQtyGreater">
+                                    <div class="col-lg-12">
+                                    <div class="alert alert-warning" style="padding:1px; margin:0px;">
+                                        <strong> Warning! </strong>Total can not be greater than Order Quantity {{globalBookingQty}}.
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addBookingQtyInExtTOList(materialTo)" [disabled]="isBookedQtyGreater == true ? true : false">Submit</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="clearList(materialTo)">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>

@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var login_services_1 = require("app/login/login.services");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var login_services_1 = require('app/login/login.services');
 var AuthGuard = (function () {
     function AuthGuard(router, authServices) {
         this.router = router;
@@ -30,12 +30,12 @@ var AuthGuard = (function () {
         this.authServices.isNotLogin();
         return false;
     };
+    AuthGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router, login_services_1.AuthenticationService])
+    ], AuthGuard);
     return AuthGuard;
 }());
-AuthGuard = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [router_1.Router, login_services_1.AuthenticationService])
-], AuthGuard);
 exports.AuthGuard = AuthGuard;
 function isLoggedin() {
     return !!localStorage.getItem('currentUser');

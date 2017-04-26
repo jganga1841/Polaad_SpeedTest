@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var common_services_1 = require("app/common/services/common.services");
-var booking_information_1 = require("app/booking/model/booking_information");
-var errorMessage_1 = require("app/error/errorMessage");
-var userTO_1 = require("app/user/model/userTO");
-var myGlobalVal = require("app/global");
-var confirm_service_1 = require("app/error/confirm.service");
-var login_services_1 = require("app/login/login.services");
-var booking_service_1 = require("../services/booking_service");
-var sharedService_1 = require("app/common/services/sharedService");
+var core_1 = require('@angular/core');
+var common_services_1 = require('app/common/services/common.services');
+var booking_information_1 = require('app/booking/model/booking_information');
+var errorMessage_1 = require('app/error/errorMessage');
+var userTO_1 = require('app/user/model/userTO');
+var myGlobalVal = require('app/global');
+var confirm_service_1 = require('app/error/confirm.service');
+var login_services_1 = require('app/login/login.services');
+var booking_service_1 = require('../services/booking_service');
+var sharedService_1 = require('app/common/services/sharedService');
 var BookingMenuComponent = (function () {
     function BookingMenuComponent(commonServices, _confirmService, loginService, bookingServices, ss) {
         this.commonServices = commonServices;
@@ -111,22 +111,18 @@ var BookingMenuComponent = (function () {
         });
         return this.isClosed;
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], BookingMenuComponent.prototype, "errorMsg", void 0);
+    BookingMenuComponent = __decorate([
+        core_1.Component({
+            selector: 'my-bookingMenus',
+            templateUrl: 'app/booking/bookingMenuUI.html'
+        }), 
+        __metadata('design:paramtypes', [common_services_1.CommonServices, confirm_service_1.ConfirmService, login_services_1.AuthenticationService, booking_service_1.bookingServices, sharedService_1.sharedService])
+    ], BookingMenuComponent);
     return BookingMenuComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], BookingMenuComponent.prototype, "errorMsg", void 0);
-BookingMenuComponent = __decorate([
-    core_1.Component({
-        selector: 'my-bookingMenus',
-        templateUrl: 'app/booking/bookingMenuUI.html'
-    }),
-    __metadata("design:paramtypes", [common_services_1.CommonServices,
-        confirm_service_1.ConfirmService,
-        login_services_1.AuthenticationService,
-        booking_service_1.bookingServices,
-        sharedService_1.sharedService])
-], BookingMenuComponent);
 exports.BookingMenuComponent = BookingMenuComponent;
 //# sourceMappingURL=bookingMenuComponent.js.map

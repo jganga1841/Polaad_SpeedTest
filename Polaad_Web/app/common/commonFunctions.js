@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var CommonFunctions = (function () {
     function CommonFunctions() {
     }
@@ -32,13 +32,13 @@ var CommonFunctions = (function () {
         });
         return this.commonInfoList;
     };
+    CommonFunctions = __decorate([
+        core_1.Component({
+            template: ''
+        }), 
+        __metadata('design:paramtypes', [])
+    ], CommonFunctions);
     return CommonFunctions;
 }());
-CommonFunctions = __decorate([
-    core_1.Component({
-        template: ''
-    }),
-    __metadata("design:paramtypes", [])
-], CommonFunctions);
 exports.CommonFunctions = CommonFunctions;
 //# sourceMappingURL=commonFunctions.js.map

@@ -8,26 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var quota_information_1 = require("app/quota_declaration/model/quota_information");
-var common_services_1 = require("app/common/services/common.services");
-var agents_services_1 = require("app/agent/services/agents_services");
-var address_information_1 = require("app/agent/model/address_information");
-var booking_information_1 = require("../model/booking_information");
-var booking_information_2 = require("../model/booking_information");
-var booking_information_3 = require("../model/booking_information");
-var quota_declaration_service_1 = require("app/quota_declaration/services/quota_declaration_service");
-var booking_service_1 = require("../services/booking_service");
-var commonFunctions_1 = require("app/common/commonFunctions");
-var errorMessage_1 = require("app/error/errorMessage");
-var confirm_service_1 = require("app/error/confirm.service");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var quota_information_1 = require('app/quota_declaration/model/quota_information');
+var common_services_1 = require('app/common/services/common.services');
+var agents_services_1 = require('app/agent/services/agents_services');
+var address_information_1 = require('app/agent/model/address_information');
+var booking_information_1 = require('../model/booking_information');
+var booking_information_2 = require('../model/booking_information');
+var booking_information_3 = require('../model/booking_information');
+var quota_declaration_service_1 = require('app/quota_declaration/services/quota_declaration_service');
+var booking_service_1 = require('../services/booking_service');
+var commonFunctions_1 = require('app/common/commonFunctions');
+var errorMessage_1 = require('app/error/errorMessage');
+var confirm_service_1 = require('app/error/confirm.service');
+var router_1 = require('@angular/router');
 var platform_browser_1 = require("@angular/platform-browser");
-var booking_information_4 = require("../model/booking_information");
-var myGlobalVal = require("app/global");
-var login_services_1 = require("app/login/login.services");
-var sharedService_1 = require("app/common/services/sharedService");
-var loading_information_1 = require("app/loading_slip/model/loading_information");
+var booking_information_4 = require('../model/booking_information');
+var myGlobalVal = require('app/global');
+var login_services_1 = require('app/login/login.services');
+var sharedService_1 = require('app/common/services/sharedService');
+var loading_information_1 = require('app/loading_slip/model/loading_information');
 var BookingComponent = (function () {
     function BookingComponent(commonServices, agentServices, quotaDeclareservices, bookingServices, _confirmService, activatedroute, _sanitizer, loginService, ss) {
         var _this = this;
@@ -748,30 +748,22 @@ var BookingComponent = (function () {
             this.CollectProductSpecif(1);
         }
     };
+    __decorate([
+        core_1.ViewChild(errorMessage_1.ErrorMessage), 
+        __metadata('design:type', errorMessage_1.ErrorMessage)
+    ], BookingComponent.prototype, "errorMsg", void 0);
+    __decorate([
+        core_1.ViewChild(commonFunctions_1.CommonFunctions), 
+        __metadata('design:type', commonFunctions_1.CommonFunctions)
+    ], BookingComponent.prototype, "commonFunc", void 0);
+    BookingComponent = __decorate([
+        core_1.Component({
+            selector: 'my-booking',
+            templateUrl: 'app/booking/booking.html'
+        }), 
+        __metadata('design:paramtypes', [common_services_1.CommonServices, agents_services_1.AgentsServices, quota_declaration_service_1.QuotaDeclarationService, booking_service_1.bookingServices, confirm_service_1.ConfirmService, router_1.ActivatedRoute, platform_browser_1.DomSanitizer, login_services_1.AuthenticationService, sharedService_1.sharedService])
+    ], BookingComponent);
     return BookingComponent;
 }());
-__decorate([
-    core_1.ViewChild(errorMessage_1.ErrorMessage),
-    __metadata("design:type", errorMessage_1.ErrorMessage)
-], BookingComponent.prototype, "errorMsg", void 0);
-__decorate([
-    core_1.ViewChild(commonFunctions_1.CommonFunctions),
-    __metadata("design:type", commonFunctions_1.CommonFunctions)
-], BookingComponent.prototype, "commonFunc", void 0);
-BookingComponent = __decorate([
-    core_1.Component({
-        selector: 'my-booking',
-        templateUrl: 'app/booking/booking.html'
-    }),
-    __metadata("design:paramtypes", [common_services_1.CommonServices,
-        agents_services_1.AgentsServices,
-        quota_declaration_service_1.QuotaDeclarationService,
-        booking_service_1.bookingServices,
-        confirm_service_1.ConfirmService,
-        router_1.ActivatedRoute,
-        platform_browser_1.DomSanitizer,
-        login_services_1.AuthenticationService,
-        sharedService_1.sharedService])
-], BookingComponent);
 exports.BookingComponent = BookingComponent;
 //# sourceMappingURL=booking.component.js.map

@@ -1,5 +1,5 @@
 "use strict";
-var CryptoJS = require("crypto-js");
+var CryptoJS = require('crypto-js');
 var key = CryptoJS.enc.Utf8.parse('7061737323313233');
 var iv = CryptoJS.enc.Utf8.parse('7061737323313233');
 exports.encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse("ganga"), key, {
