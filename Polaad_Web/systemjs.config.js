@@ -43,7 +43,7 @@
 
             //[GJ] : 20170222 : For the Collapse and exxpand
             //"squeezebox": "npm:squeezebox",
-            "squeezebox": "node_modules/squeezebox",
+            "squeezebox": "npm:squeezebox",
 
             //[Vijaymala]:23-02-2017 : For tooptip
             "ngx-tooltip": "node_modules/ngx-tooltip",
