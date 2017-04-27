@@ -33,6 +33,7 @@
             '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
             // other libraries
             //'rxjs': 'npm:rxjs',
+
             'rxjs': 'node_modules/rxjs',
             //'angular2-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'ts': 'npm:plugin-typescript@4.0.10/lib/plugin.js',
