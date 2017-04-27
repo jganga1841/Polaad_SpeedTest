@@ -36,13 +36,14 @@
 
             'rxjs': 'node_modules/rxjs',
             //'angular2-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            'ts': 'npm:plugin-typescript@4.0.10/lib/plugin.js',
+            'ts': 'node_modules/plugin-typescript@4.0.10/lib/plugin.js',
             //'typescript': 'npm:typescript@2.0.2/lib/typescript.js',
             'typescript': 'scripts/typescript.js',
             'ng2-datetime-picker': 'node_modules/ng2-datetime-picker/dist',
 
             //[GJ] : 20170222 : For the Collapse and exxpand
-            "squeezebox": "npm:squeezebox",
+            //"squeezebox": "npm:squeezebox",
+            "squeezebox": "node_modules/squeezebox",
 
             //[Vijaymala]:23-02-2017 : For tooptip
             "ngx-tooltip": "node_modules/ngx-tooltip",
