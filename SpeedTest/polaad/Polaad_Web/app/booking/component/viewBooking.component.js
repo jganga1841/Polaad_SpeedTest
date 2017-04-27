@@ -487,12 +487,14 @@ ViewBookinComponent = __decorate([
         templateUrl: 'app/booking/viewBooking.html',
         providers: [confirm_service_1.ConfirmService, contextMenu_service_1.ContextMenuService]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, common_services_1.CommonServices,
+    __metadata("design:paramtypes", [router_1.Router,
+        common_services_1.CommonServices,
         booking_service_1.bookingServices,
         confirm_service_1.ConfirmService,
         contextMenu_service_1.ContextMenuService,
         login_services_1.AuthenticationService,
-        sharedService_1.sharedService, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
+        sharedService_1.sharedService,
+        router_1.ActivatedRoute])
 ], ViewBookinComponent);
 exports.ViewBookinComponent = ViewBookinComponent;
 var ViewParticularBooking = (function () {
@@ -515,8 +517,8 @@ ViewParticularBooking = __decorate([
         selector: 'view-ParticularBooking',
         templateUrl: 'app/booking/viewParticularBooking.html',
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _c || Object, typeof (_d = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _d || Object, typeof (_e = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _e || Object])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router, common_1.Location])
 ], ViewParticularBooking);
 exports.ViewParticularBooking = ViewParticularBooking;
-var _a, _b, _c, _d, _e;
 //# sourceMappingURL=viewBooking.component.js.map

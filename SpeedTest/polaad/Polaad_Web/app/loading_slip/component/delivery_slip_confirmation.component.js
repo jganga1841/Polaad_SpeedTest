@@ -171,10 +171,12 @@ DeliverySlipConfComponent = __decorate([
         templateUrl: 'app/loading_slip/delivery_slip_confirmation.html',
         providers: [confirm_service_1.ConfirmService]
     }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, confirm_service_1.ConfirmService,
+    __metadata("design:paramtypes", [sharedService_1.sharedService,
+        router_1.Router,
+        confirm_service_1.ConfirmService,
         loading_service_1.LoadingServices,
-        login_services_1.AuthenticationService, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object])
+        login_services_1.AuthenticationService,
+        router_1.ActivatedRoute])
 ], DeliverySlipConfComponent);
 exports.DeliverySlipConfComponent = DeliverySlipConfComponent;
-var _a, _b;
 //# sourceMappingURL=delivery_slip_confirmation.component.js.map

@@ -471,10 +471,11 @@ StockDetailsComponent = __decorate([
         providers: [confirm_service_1.ConfirmService]
     }),
     __metadata("design:paramtypes", [sharedService_1.sharedService,
-        common_services_1.CommonServices, typeof (_a = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _a || Object, stock_services_1.StockDetailsServices,
+        common_services_1.CommonServices,
+        platform_browser_1.DomSanitizer,
+        stock_services_1.StockDetailsServices,
         login_services_1.AuthenticationService,
         confirm_service_1.ConfirmService])
 ], StockDetailsComponent);
 exports.StockDetailsComponent = StockDetailsComponent;
-var _a;
 //# sourceMappingURL=stock_component.js.map

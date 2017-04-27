@@ -45,8 +45,7 @@ TooltipContainer = __decorate([
         template: "<div class=\"tooltip\" role=\"tooltip\"\n     [ngStyle]=\"{top: top, left: left, display: display}\"\n     [ngClass]=\"classMap\">\n      <div class=\"tooltip-arrow\"></div>\n      <div class=\"tooltip-inner\">\n        {{content}}\n      </div>\n    </div>"
     }),
     __param(1, core_1.Inject(tooltip_options_class_1.TooltipOptions)),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, tooltip_options_class_1.TooltipOptions])
+    __metadata("design:paramtypes", [core_1.ElementRef, tooltip_options_class_1.TooltipOptions])
 ], TooltipContainer);
 exports.TooltipContainer = TooltipContainer;
-var _a;
 //# sourceMappingURL=tooltip-container.component.js.map

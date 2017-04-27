@@ -87,8 +87,8 @@ var AuthenticationService = (function () {
 }());
 AuthenticationService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
+    __metadata("design:paramtypes", [http_1.Http,
+        router_1.Router])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
-var _a, _b;
 //# sourceMappingURL=login.services.js.map

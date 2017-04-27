@@ -1,10 +1,10 @@
 'use strict';
 exports.sep = '/';
 //For Windows Azure server
-//export const gnBaseURL: string="http://stapiservice.azurewebsites.net/api/";    
+exports.gnBaseURL = "http://stapiservice.azurewebsites.net/api/";
 //For Local Test server
 //export const gnBaseURL: string="http://192.168.0.189:64945/api/";      
-exports.gnBaseURL = "http://localhost:64942/api/";
+//export const gnBaseURL: string="http://localhost:64942/api/";    
 exports.gnOrderBooking = exports.gnBaseURL + "booking/PostNewBooking";
 exports.gnViewBooking = exports.gnBaseURL + "booking/GetPendingBookingList";
 exports.gnGetOrgListForDDL = exports.gnBaseURL + "Organization/GetOrganizationDropDownList?orgTypeId=";

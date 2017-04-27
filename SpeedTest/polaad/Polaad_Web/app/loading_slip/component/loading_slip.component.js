@@ -52,7 +52,7 @@ FocusDirective = __decorate([
         selector: '[focus]'
     }),
     __param(0, core_1.Inject(core_1.ElementRef)),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], FocusDirective);
 var LoadingSlipComponent = (function () {
     function LoadingSlipComponent(ss, commonServices, bookingServices, loadingServices, _confirmService, builder, _sanitizer, authLoginServices) {
@@ -1474,8 +1474,10 @@ LoadingSlipComponent = __decorate([
         common_services_1.CommonServices,
         booking_service_1.bookingServices,
         loading_service_1.LoadingServices,
-        confirm_service_1.ConfirmService, typeof (_b = typeof forms_2.FormBuilder !== "undefined" && forms_2.FormBuilder) === "function" && _b || Object, typeof (_c = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _c || Object, login_services_1.AuthenticationService])
+        confirm_service_1.ConfirmService,
+        forms_2.FormBuilder,
+        platform_browser_1.DomSanitizer,
+        login_services_1.AuthenticationService])
 ], LoadingSlipComponent);
 exports.LoadingSlipComponent = LoadingSlipComponent;
-var _a, _b, _c;
 //# sourceMappingURL=loading_slip.component.js.map

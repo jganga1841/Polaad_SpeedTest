@@ -68,8 +68,7 @@ var QuotaDeclarationService = (function () {
 }());
 QuotaDeclarationService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+    __metadata("design:paramtypes", [http_1.Http])
 ], QuotaDeclarationService);
 exports.QuotaDeclarationService = QuotaDeclarationService;
-var _a;
 //# sourceMappingURL=quota_declaration_service.js.map

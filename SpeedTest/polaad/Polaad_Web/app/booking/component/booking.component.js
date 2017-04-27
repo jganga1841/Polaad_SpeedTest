@@ -767,9 +767,11 @@ BookingComponent = __decorate([
         agents_services_1.AgentsServices,
         quota_declaration_service_1.QuotaDeclarationService,
         booking_service_1.bookingServices,
-        confirm_service_1.ConfirmService, typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof platform_browser_1.DomSanitizer !== "undefined" && platform_browser_1.DomSanitizer) === "function" && _b || Object, login_services_1.AuthenticationService,
+        confirm_service_1.ConfirmService,
+        router_1.ActivatedRoute,
+        platform_browser_1.DomSanitizer,
+        login_services_1.AuthenticationService,
         sharedService_1.sharedService])
 ], BookingComponent);
 exports.BookingComponent = BookingComponent;
-var _a, _b;
 //# sourceMappingURL=booking.component.js.map

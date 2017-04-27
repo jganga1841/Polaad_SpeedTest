@@ -116,8 +116,7 @@ var bookingServices = (function () {
 }());
 bookingServices = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof http_1.Http !== "undefined" && http_1.Http) === "function" && _a || Object])
+    __metadata("design:paramtypes", [http_1.Http])
 ], bookingServices);
 exports.bookingServices = bookingServices;
-var _a;
 //# sourceMappingURL=booking_service.js.map

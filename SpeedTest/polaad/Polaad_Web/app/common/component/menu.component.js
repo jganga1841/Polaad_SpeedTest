@@ -86,8 +86,9 @@ MenuComponent = __decorate([
             '</ul>' +
             '</li></ul>'
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object, login_services_1.AuthenticationService])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        login_services_1.AuthenticationService])
 ], MenuComponent);
 exports.MenuComponent = MenuComponent;
-var _a, _b;
 //# sourceMappingURL=menu.component.js.map

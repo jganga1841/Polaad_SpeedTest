@@ -34,12 +34,11 @@ var AuthGuard = (function () {
 }());
 AuthGuard = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, login_services_1.AuthenticationService])
+    __metadata("design:paramtypes", [router_1.Router, login_services_1.AuthenticationService])
 ], AuthGuard);
 exports.AuthGuard = AuthGuard;
 function isLoggedin() {
     return !!localStorage.getItem('currentUser');
 }
 exports.isLoggedin = isLoggedin;
-var _a;
 //# sourceMappingURL=auth.guard.js.map

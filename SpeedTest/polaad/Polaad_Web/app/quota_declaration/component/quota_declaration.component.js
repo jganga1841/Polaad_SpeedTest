@@ -205,8 +205,9 @@ QuotaDeclarationComponent = __decorate([
     __metadata("design:paramtypes", [sharedService_1.sharedService,
         quota_declaration_service_1.QuotaDeclarationService,
         confirm_service_1.ConfirmService,
-        common_services_1.CommonServices, typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
+        common_services_1.CommonServices,
+        router_1.ActivatedRoute,
+        router_1.Router])
 ], QuotaDeclarationComponent);
 exports.QuotaDeclarationComponent = QuotaDeclarationComponent;
-var _a, _b;
 //# sourceMappingURL=quota_declaration.component.js.map

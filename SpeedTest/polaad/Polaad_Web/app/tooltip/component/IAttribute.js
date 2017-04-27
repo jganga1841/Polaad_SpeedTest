@@ -36,8 +36,7 @@ NgTransclude = __decorate([
         selector: '[ngTransclude]',
     }),
     __param(0, core_1.Inject(core_1.ViewContainerRef)),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ViewContainerRef !== "undefined" && core_1.ViewContainerRef) === "function" && _a || Object])
+    __metadata("design:paramtypes", [core_1.ViewContainerRef])
 ], NgTransclude);
 exports.NgTransclude = NgTransclude;
-var _a;
 //# sourceMappingURL=IAttribute.js.map

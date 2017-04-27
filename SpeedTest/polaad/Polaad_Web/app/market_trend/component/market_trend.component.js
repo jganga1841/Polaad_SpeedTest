@@ -193,8 +193,9 @@ MarketTrendComponent = __decorate([
         common_services_1.CommonServices,
         market_trend_service_1.MarketTrendServices,
         confirm_service_1.ConfirmService,
-        login_services_1.AuthenticationService, typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _b || Object])
+        login_services_1.AuthenticationService,
+        router_1.ActivatedRoute,
+        router_1.Router])
 ], MarketTrendComponent);
 exports.MarketTrendComponent = MarketTrendComponent;
-var _a, _b;
 //# sourceMappingURL=market_trend.component.js.map

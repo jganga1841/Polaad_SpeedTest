@@ -445,8 +445,8 @@ LoadingQuotaComponent = __decorate([
         loading_service_1.LoadingServices,
         login_services_1.AuthenticationService,
         confirm_service_1.ConfirmService,
-        common_services_1.CommonServices, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+        common_services_1.CommonServices,
+        router_1.Router])
 ], LoadingQuotaComponent);
 exports.LoadingQuotaComponent = LoadingQuotaComponent;
-var _a;
 //# sourceMappingURL=loading_quota.component.js.map

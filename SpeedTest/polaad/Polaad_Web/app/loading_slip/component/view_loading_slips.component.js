@@ -231,9 +231,12 @@ ViewLoadingComponent = __decorate([
         templateUrl: 'app/loading_slip/view_loading_slip.html',
         providers: [confirm_service_1.ConfirmService]
     }),
-    __metadata("design:paramtypes", [sharedService_1.sharedService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object, loading_service_1.LoadingServices, typeof (_b = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _b || Object, login_services_1.AuthenticationService,
+    __metadata("design:paramtypes", [sharedService_1.sharedService,
+        router_1.Router,
+        loading_service_1.LoadingServices,
+        router_1.ActivatedRoute,
+        login_services_1.AuthenticationService,
         common_services_1.CommonServices])
 ], ViewLoadingComponent);
 exports.ViewLoadingComponent = ViewLoadingComponent;
-var _a, _b;
 //# sourceMappingURL=view_loading_slips.component.js.map

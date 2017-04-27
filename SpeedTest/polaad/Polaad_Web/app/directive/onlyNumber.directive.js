@@ -50,10 +50,9 @@ OnlyNumber = __decorate([
     core_1.Directive({
         selector: '[OnlyNumber]'
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], OnlyNumber);
 exports.OnlyNumber = OnlyNumber;
-var _a;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
